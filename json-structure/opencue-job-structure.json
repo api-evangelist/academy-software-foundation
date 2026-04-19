@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/academy-software-foundation/refs/heads/main/json-structure/opencue-job-structure.json",
+  "name": "Job",
+  "description": "A render job in OpenCue",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique job identifier",
+      "example": "job-def456"
+    },
+    "name": {
+      "type": "string",
+      "description": "Full job name",
+      "example": "feature_film_2026-shot_001-render_v001"
+    },
+    "show": {
+      "type": "string",
+      "description": "Show name this job belongs to",
+      "example": "feature_film_2026"
+    },
+    "state": {
+      "type": "string",
+      "description": "Current job state",
+      "example": "RUNNING",
+      "enum": [
+        "PENDING",
+        "RUNNING",
+        "FINISHED",
+        "PAUSED"
+      ]
+    },
+    "priority": {
+      "type": "int32",
+      "description": "Job priority (higher is more important)",
+      "example": 100
+    },
+    "totalFrames": {
+      "type": "int32",
+      "description": "Total number of frames in the job",
+      "example": 100
+    },
+    "doneFrames": {
+      "type": "int32",
+      "description": "Number of completed frames",
+      "example": 45
+    },
+    "runningFrames": {
+      "type": "int32",
+      "description": "Number of currently running frames",
+      "example": 8
+    },
+    "deadFrames": {
+      "type": "int32",
+      "description": "Number of failed/dead frames",
+      "example": 0
+    },
+    "waitingFrames": {
+      "type": "int32",
+      "description": "Number of frames waiting to be dispatched",
+      "example": 47
+    }
+  }
+}

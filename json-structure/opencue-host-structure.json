@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/academy-software-foundation/refs/heads/main/json-structure/opencue-host-structure.json",
+  "name": "Host",
+  "description": "A render host machine",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique host identifier",
+      "example": "host-jkl012"
+    },
+    "name": {
+      "type": "string",
+      "description": "Hostname",
+      "example": "render-host-001.studio.local"
+    },
+    "state": {
+      "type": "string",
+      "description": "Host state",
+      "example": "UP",
+      "enum": [
+        "UP",
+        "DOWN",
+        "REPAIR"
+      ]
+    },
+    "lock": {
+      "type": "string",
+      "description": "Host lock state",
+      "example": "OPEN",
+      "enum": [
+        "OPEN",
+        "LOCKED",
+        "NIMBY_LOCKED"
+      ]
+    },
+    "totalCores": {
+      "type": "int32",
+      "description": "Total CPU cores on the host",
+      "example": 64
+    },
+    "idleCores": {
+      "type": "int32",
+      "description": "Currently idle CPU cores",
+      "example": 32
+    },
+    "totalMemory": {
+      "type": "int32",
+      "description": "Total memory in MB",
+      "example": 131072
+    },
+    "idleMemory": {
+      "type": "int32",
+      "description": "Currently idle memory in MB",
+      "example": 65536
+    },
+    "load": {
+      "type": "int32",
+      "description": "Current system load (percentage)",
+      "example": 35
+    }
+  }
+}

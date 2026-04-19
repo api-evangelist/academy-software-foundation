@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/academy-software-foundation/refs/heads/main/json-structure/opencue-layer-structure.json",
+  "name": "Layer",
+  "description": "A layer within a render job",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique layer identifier",
+      "example": "layer-ghi789"
+    },
+    "name": {
+      "type": "string",
+      "description": "Layer name",
+      "example": "render"
+    },
+    "type": {
+      "type": "string",
+      "description": "Layer type",
+      "example": "RENDER",
+      "enum": [
+        "RENDER",
+        "UTIL"
+      ]
+    },
+    "state": {
+      "type": "string",
+      "description": "Layer state",
+      "example": "RUNNING"
+    },
+    "minCores": {
+      "type": "int32",
+      "description": "Minimum cores required per frame",
+      "example": 100
+    },
+    "maxCores": {
+      "type": "int32",
+      "description": "Maximum cores allowed per frame",
+      "example": 2000
+    },
+    "threadable": {
+      "type": "boolean",
+      "description": "Whether frames can run multi-threaded",
+      "example": false
+    },
+    "totalFrames": {
+      "type": "int32",
+      "description": "Total number of frames in this layer",
+      "example": 100
+    },
+    "doneFrames": {
+      "type": "int32",
+      "description": "Number of completed frames in this layer",
+      "example": 45
+    }
+  }
+}

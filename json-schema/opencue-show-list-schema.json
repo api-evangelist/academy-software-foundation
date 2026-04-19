@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/academy-software-foundation/refs/heads/main/json-schema/opencue-show-list-schema.json",
+  "title": "ShowList",
+  "description": "List of shows",
+  "type": "object",
+  "properties": {
+    "shows": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Show"
+      }
+    }
+  }
+}

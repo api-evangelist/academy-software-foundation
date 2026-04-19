@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/academy-software-foundation/refs/heads/main/json-structure/opencue-host-list-structure.json",
+  "name": "HostList",
+  "description": "List of hosts",
+  "type": "object",
+  "properties": {
+    "hosts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Host"
+      }
+    }
+  }
+}

@@ -1,0 +1,124 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Academy Software Foundation Render Farm Management"
+  description: "Render farm management workflow using OpenCue for monitoring and managing render jobs, layers, frames, and hosts in a VFX production pipeline. Used by render wranglers and pipeline TDs to monitor and troubleshoot render farm operations."
+  tags:
+    - Academy Software Foundation
+    - Render Farm
+    - Opencue
+    - Vfx Pipeline
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      OPENCUE_HOST: OPENCUE_HOST
+
+capability:
+  consumes:
+    - import: opencue
+      location: ./shared/opencue.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: render-farm-api
+      description: "Unified REST API for VFX render farm management."
+      resources:
+        - path: /v1/shows
+          name: shows
+          description: "List and manage render shows (productions)"
+          operations:
+            - method: GET
+              name: list-shows
+              description: "List all active shows in the render farm"
+              call: "opencue.listShows"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/jobs
+          name: jobs
+          description: "List and manage render jobs"
+          operations:
+            - method: GET
+              name: list-jobs
+              description: "List render jobs for a show"
+              call: "opencue.listJobs"
+              with:
+                show_id: "rest.show_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/jobs/{job_id}
+          name: job
+          description: "Get or kill a specific render job"
+          operations:
+            - method: GET
+              name: get-job
+              description: "Get details for a specific render job"
+              call: "opencue.getJob"
+              with:
+                job_id: "rest.job_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/hosts
+          name: hosts
+          description: "List and manage render hosts"
+          operations:
+            - method: GET
+              name: list-hosts
+              description: "List all render host machines"
+              call: "opencue.listHosts"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: render-farm-mcp
+      transport: http
+      description: "MCP server for AI-assisted render farm monitoring and management."
+      tools:
+        - name: list-shows
+          description: "List all active shows (productions) in the render farm"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "opencue.listShows"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-render-jobs
+          description: "List render jobs for a specific show with optional state filtering"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "opencue.listJobs"
+          with:
+            show_id: "tools.show_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-render-job
+          description: "Get detailed status and frame counts for a specific render job"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "opencue.getJob"
+          with:
+            job_id: "tools.job_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-render-hosts
+          description: "List all render host machines and their current utilization"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "opencue.listHosts"
+          outputParameters:
+            - type: object
+              mapping: "$."

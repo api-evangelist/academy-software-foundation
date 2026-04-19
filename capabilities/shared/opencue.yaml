@@ -1,0 +1,99 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "OpenCue Render Management API"
+  description: "OpenCue is an open source render management system developed by Sony Pictures Imageworks and hosted by the Academy Software Foundation."
+  tags:
+    - Academy Software Foundation
+    - Opencue
+    - Render Management
+    - Vfx
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      OPENCUE_HOST: OPENCUE_HOST
+
+capability:
+  consumes:
+    - type: http
+      namespace: opencue
+      baseUri: "http://{{env.OPENCUE_HOST}}:8080"
+      description: "OpenCue REST gateway API"
+      resources:
+        - name: shows
+          path: /api/show
+          description: Render show (production) management
+          operations:
+            - name: listShows
+              method: GET
+              description: List all active shows
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: jobs
+          path: /api/show/{show_id}/job
+          description: Render job management per show
+          operations:
+            - name: listJobs
+              method: GET
+              description: List jobs for a show
+              inputParameters:
+                - name: show_id
+                  in: path
+                  type: string
+                  required: true
+                  description: Show identifier
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: job
+          path: /api/job/{job_id}
+          description: Individual render job management
+          operations:
+            - name: getJob
+              method: GET
+              description: Get details of a render job
+              inputParameters:
+                - name: job_id
+                  in: path
+                  type: string
+                  required: true
+                  description: Job identifier
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: killJob
+              method: DELETE
+              description: Kill a running render job
+              inputParameters:
+                - name: job_id
+                  in: path
+                  type: string
+                  required: true
+                  description: Job identifier to kill
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: hosts
+          path: /api/host
+          description: Render host machine management
+          operations:
+            - name: listHosts
+              method: GET
+              description: List all render hosts in the farm
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."

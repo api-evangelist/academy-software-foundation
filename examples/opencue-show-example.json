@@ -1,0 +1,7 @@
+{
+  "id": "show-abc123",
+  "name": "feature_film_2026",
+  "active": true,
+  "defaultMinCores": 100,
+  "defaultMaxCores": 5000
+}

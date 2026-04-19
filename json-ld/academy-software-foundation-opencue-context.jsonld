@@ -1,0 +1,101 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "aswf": "https://aswf.io/schema/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Host": "aswf:Host",
+    "id": {
+      "@id": "aswf:id",
+      "@type": "xsd:string"
+    },
+    "name": "schema:name",
+    "state": {
+      "@id": "aswf:state",
+      "@type": "xsd:string"
+    },
+    "lock": {
+      "@id": "aswf:lock",
+      "@type": "xsd:string"
+    },
+    "totalCores": {
+      "@id": "aswf:totalCores",
+      "@type": "xsd:integer"
+    },
+    "idleCores": {
+      "@id": "aswf:idleCores",
+      "@type": "xsd:integer"
+    },
+    "totalMemory": {
+      "@id": "aswf:totalMemory",
+      "@type": "xsd:integer"
+    },
+    "idleMemory": {
+      "@id": "aswf:idleMemory",
+      "@type": "xsd:integer"
+    },
+    "load": {
+      "@id": "aswf:load",
+      "@type": "xsd:integer"
+    },
+    "Job": "aswf:Job",
+    "show": {
+      "@id": "aswf:show",
+      "@type": "xsd:string"
+    },
+    "priority": {
+      "@id": "aswf:priority",
+      "@type": "xsd:integer"
+    },
+    "totalFrames": {
+      "@id": "aswf:totalFrames",
+      "@type": "xsd:integer"
+    },
+    "doneFrames": {
+      "@id": "aswf:doneFrames",
+      "@type": "xsd:integer"
+    },
+    "runningFrames": {
+      "@id": "aswf:runningFrames",
+      "@type": "xsd:integer"
+    },
+    "deadFrames": {
+      "@id": "aswf:deadFrames",
+      "@type": "xsd:integer"
+    },
+    "waitingFrames": {
+      "@id": "aswf:waitingFrames",
+      "@type": "xsd:integer"
+    },
+    "Layer": "aswf:Layer",
+    "type": {
+      "@id": "aswf:type",
+      "@type": "xsd:string"
+    },
+    "minCores": {
+      "@id": "aswf:minCores",
+      "@type": "xsd:integer"
+    },
+    "maxCores": {
+      "@id": "aswf:maxCores",
+      "@type": "xsd:integer"
+    },
+    "threadable": {
+      "@id": "aswf:threadable",
+      "@type": "xsd:boolean"
+    },
+    "Show": "aswf:Show",
+    "active": {
+      "@id": "aswf:active",
+      "@type": "xsd:boolean"
+    },
+    "defaultMinCores": {
+      "@id": "aswf:defaultMinCores",
+      "@type": "xsd:integer"
+    },
+    "defaultMaxCores": {
+      "@id": "aswf:defaultMaxCores",
+      "@type": "xsd:integer"
+    }
+  }
+}

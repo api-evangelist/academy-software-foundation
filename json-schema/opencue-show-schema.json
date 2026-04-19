@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/academy-software-foundation/refs/heads/main/json-schema/opencue-show-schema.json",
+  "title": "Show",
+  "description": "A show (production) in OpenCue",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique show identifier",
+      "example": "show-abc123"
+    },
+    "name": {
+      "type": "string",
+      "description": "Show name",
+      "example": "feature_film_2026"
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Whether the show is currently active",
+      "example": true
+    },
+    "defaultMinCores": {
+      "type": "integer",
+      "description": "Default minimum cores for jobs in this show",
+      "example": 100
+    },
+    "defaultMaxCores": {
+      "type": "integer",
+      "description": "Default maximum cores for jobs in this show",
+      "example": 5000
+    }
+  }
+}

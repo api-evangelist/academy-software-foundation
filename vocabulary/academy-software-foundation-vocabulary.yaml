@@ -1,0 +1,250 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Academy Software Foundation"
+  description: "Taxonomy of Academy Software Foundation open source projects, APIs, and tools for the motion picture and visual effects industries"
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - name: OpenCue API
+      namespace: opencue
+      version: "1.0.0"
+      baseUrl: http://localhost:8080
+      status: active
+
+  resources:
+    - name: shows
+      apis:
+        - opencue
+      actions:
+        - list
+    - name: jobs
+      apis:
+        - opencue
+      actions:
+        - list
+        - get
+        - kill
+    - name: layers
+      apis:
+        - opencue
+      actions:
+        - list
+    - name: hosts
+      apis:
+        - opencue
+      actions:
+        - list
+
+  actions:
+    - name: list
+      httpMethod: GET
+      pattern: read
+      description: List all resources of a given type
+    - name: get
+      httpMethod: GET
+      pattern: read
+      description: Get details for a specific resource
+    - name: kill
+      httpMethod: DELETE
+      pattern: destructive
+      description: Terminate a running job or process
+
+  parameters:
+    identifiers:
+      - name: show_id
+        description: Unique identifier for a show (production)
+        type: string
+      - name: job_id
+        description: Unique identifier for a render job
+        type: string
+    filters:
+      - name: state
+        description: Filter resources by state (e.g., RUNNING, PENDING, FINISHED)
+        type: string
+
+  enums:
+    job_state:
+      - PENDING
+      - RUNNING
+      - FINISHED
+      - PAUSED
+    host_state:
+      - UP
+      - DOWN
+      - REPAIR
+    host_lock:
+      - OPEN
+      - LOCKED
+      - NIMBY_LOCKED
+    layer_type:
+      - RENDER
+      - UTIL
+
+  authentication:
+    schemes:
+      - type: none
+        description: OpenCue REST gateway does not require authentication by default in on-premise deployments
+
+capability:
+  workflows:
+    - name: Render Farm Management
+      file: capabilities/render-farm-management.yaml
+      description: Monitor and manage render jobs, hosts, and shows using OpenCue
+      apis:
+        - opencue
+      toolCount: 4
+      personas:
+        - render-wrangler
+        - pipeline-td
+
+  personas:
+    - id: render-wrangler
+      name: Render Wrangler
+      description: Production staff responsible for monitoring and managing render farm operations
+      workflows:
+        - Render Farm Management
+    - id: pipeline-td
+      name: Pipeline TD
+      description: Technical director building and maintaining VFX production pipeline tools
+      workflows:
+        - Render Farm Management
+
+  domains:
+    - name: Render Farm Operations
+      description: Monitoring and management of distributed render farm resources and jobs
+      resources:
+        - shows
+        - jobs
+        - hosts
+      workflows:
+        - Render Farm Management
+
+  namespaces:
+    consumed:
+      - opencue
+    rest:
+      - render-farm-api (port 8080)
+    mcp:
+      - render-farm-mcp (port 9090)
+
+  binds:
+    - OPENCUE_HOST
+
+crossReference:
+  - resource: shows
+    operations:
+      - listShows
+    workflows:
+      - Render Farm Management
+    personas:
+      - render-wrangler
+      - pipeline-td
+  - resource: jobs
+    operations:
+      - listJobs
+      - getJob
+      - killJob
+    workflows:
+      - Render Farm Management
+    personas:
+      - render-wrangler
+  - resource: hosts
+    operations:
+      - listHosts
+    workflows:
+      - Render Farm Management
+    personas:
+      - render-wrangler
+      - pipeline-td
+
+projects:
+  - name: OpenEXR
+    description: Industry-standard HDR image file format and C++ library
+    github: https://github.com/AcademySoftwareFoundation/openexr
+    website: https://openexr.com/
+    type: standard
+    tags:
+      - Image Format
+      - Hdr
+      - C++
+  - name: OpenVDB
+    description: Academy Award-winning sparse volumetric data structure and tools
+    github: https://github.com/AcademySoftwareFoundation/openvdb
+    website: https://www.openvdb.org/
+    type: standard
+    tags:
+      - Volumetric Data
+      - Rendering
+      - C++
+  - name: OpenColorIO
+    description: Complete color management framework for visual effects and animation
+    github: https://github.com/AcademySoftwareFoundation/OpenColorIO
+    website: https://opencolorio.org/
+    type: standard
+    tags:
+      - Color Management
+      - C++
+  - name: OpenTimelineIO
+    description: Open API and interchange format for editorial timeline information
+    github: https://github.com/AcademySoftwareFoundation/OpenTimelineIO
+    website: https://opentimeline.io/
+    type: opensource
+    tags:
+      - Editorial
+      - Timeline
+      - Python
+  - name: Open Shading Language
+    description: Advanced programmable shading language for production GI renderers
+    github: https://github.com/AcademySoftwareFoundation/OpenShadingLanguage
+    type: standard
+    tags:
+      - Shading
+      - Rendering
+  - name: MaterialX
+    description: Open standard for material and look-development content exchange
+    github: https://github.com/AcademySoftwareFoundation/MaterialX
+    website: https://www.materialx.org/
+    type: standard
+    tags:
+      - Materials
+      - Shading
+  - name: OpenCue
+    description: Open source render management system for VFX and animation
+    github: https://github.com/AcademySoftwareFoundation/OpenCue
+    website: https://www.opencue.io/
+    type: opensource
+    tags:
+      - Render Management
+      - Pipeline
+  - name: OpenImageIO
+    description: Library for reading, writing, and processing images in many formats
+    github: https://github.com/AcademySoftwareFoundation/OpenImageIO
+    type: opensource
+    tags:
+      - Image Processing
+      - C++
+  - name: OpenFX
+    description: Open standard API for visual effects plug-ins
+    github: https://github.com/AcademySoftwareFoundation/openfx
+    website: https://openfx.io/
+    type: standard
+    tags:
+      - Plugin Api
+      - Compositing
+  - name: OpenAPV
+    description: Open royalty-free video codec for professional production
+    github: https://github.com/AcademySoftwareFoundation/openapv
+    type: standard
+    tags:
+      - Video Codec
+  - name: OpenPBR
+    description: Open physically-based shading model specification
+    github: https://github.com/AcademySoftwareFoundation/OpenPBR
+    website: https://academysoftwarefoundation.github.io/OpenPBR/
+    type: standard
+    tags:
+      - Rendering
+      - Materials

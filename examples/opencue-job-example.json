@@ -1,0 +1,12 @@
+{
+  "id": "job-def456",
+  "name": "feature_film_2026-shot_001-render_v001",
+  "show": "feature_film_2026",
+  "state": "RUNNING",
+  "priority": 100,
+  "totalFrames": 100,
+  "doneFrames": 45,
+  "runningFrames": 8,
+  "deadFrames": 0,
+  "waitingFrames": 47
+}

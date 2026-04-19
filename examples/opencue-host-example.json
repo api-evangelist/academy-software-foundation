@@ -1,0 +1,11 @@
+{
+  "id": "host-jkl012",
+  "name": "render-host-001.studio.local",
+  "state": "UP",
+  "lock": "OPEN",
+  "totalCores": 64,
+  "idleCores": 32,
+  "totalMemory": 131072,
+  "idleMemory": 65536,
+  "load": 35
+}

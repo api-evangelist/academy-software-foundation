@@ -1,0 +1,11 @@
+{
+  "id": "layer-ghi789",
+  "name": "render",
+  "type": "RENDER",
+  "state": "RUNNING",
+  "minCores": 100,
+  "maxCores": 2000,
+  "threadable": false,
+  "totalFrames": 100,
+  "doneFrames": 45
+}

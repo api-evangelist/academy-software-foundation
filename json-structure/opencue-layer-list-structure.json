@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/academy-software-foundation/refs/heads/main/json-structure/opencue-layer-list-structure.json",
+  "name": "LayerList",
+  "description": "List of layers",
+  "type": "object",
+  "properties": {
+    "layers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Layer"
+      }
+    }
+  }
+}
