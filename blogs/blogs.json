@@ -1,0 +1,13 @@
+{
+  "repo": "academy-software-foundation",
+  "feeds": [
+    {
+      "source": "https://www.aswf.io/news/",
+      "feed_url": "https://www.aswf.io/feed/",
+      "saved": 10,
+      "title": "ASWF"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:20:27Z"
+}
