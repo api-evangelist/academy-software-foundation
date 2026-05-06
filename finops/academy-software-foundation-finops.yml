@@ -1,5 +1,6 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
@@ -8,10 +9,11 @@ alignedWith:
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 provider: Academy Software Foundation
 providerId: academy-software-foundation
-publisherName: Academy Software Foundation
-serviceCategory: API
+publisherName: The Linux Foundation
+serviceCategory: Open Source Software / Standards
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - Animation
   - Color Management
@@ -23,200 +25,52 @@ tags:
   - Visual Effects
   - VFX
   - FinOps
-  - Cost Management
   - FOCUS
-description: FinOps framework definition for the Academy Software Foundation API surface. Provides a FOCUS-aligned
-  mapping for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+description: FOCUS-aligned FinOps scaffold for Academy Software Foundation. ASWF projects are free open
+  source libraries; there are no provider invoices to allocate. FinOps relevance is internal — studios
+  track CI/CD compute, storage, and developer time spent on ASWF integrations rather than vendor charges.
+sources:
+  - https://www.aswf.io/
+  - https://www.aswf.io/membership/
+notes: No vendor billing surface. The only direct ASWF cost is Linux Foundation membership (negotiated,
+  not publicly metered). Internal FinOps focus is on the compute and storage costs studios incur when
+  building, testing, and running ASWF-based pipelines — those costs land on the underlying cloud or on-prem
+  provider, not ASWF.
 billingModel:
-  pricingCategory: Usage-Based
-  billingFrequency: Monthly
+  pricingCategory: Membership / Free Open Source
+  billingFrequency: Annual
   billingCurrency: USD
   chargeCategories:
-    - Usage
     - Purchase
-    - Tax
-    - Credit
-    - Adjustment
-  chargeFrequency: Recurring
 focusColumns:
   ServiceName: Academy Software Foundation
-  ServiceCategory: Developer Tools / API
+  ServiceCategory: Open Source Software / Standards
   ProviderName: Academy Software Foundation
-  PublisherName: Academy Software Foundation
-  InvoiceIssuerName: Academy Software Foundation
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  PublisherName: The Linux Foundation
+  InvoiceIssuerName: The Linux Foundation
   BillingCurrency: USD
-  ChargeCategory: Usage
+  ChargeCategory: Purchase
 meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
+  - name: lf_membership
+    description: Annual Linux Foundation / ASWF membership fee, negotiated by tier.
+    unit: year
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
-    aggregation: sum
-    dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: OpenEXR
-    baseURL: ''
-    tags:
-      - Image Format
-      - HDR
-      - Standards
-      - C++
-    serviceName: OpenEXR
-    serviceCategory: API
-  - name: OpenVDB
-    baseURL: ''
-    tags:
-      - Volumetric Data
-      - C++
-      - Rendering
-      - Standards
-    serviceName: OpenVDB
-    serviceCategory: API
-  - name: OpenColorIO
-    baseURL: ''
-    tags:
-      - Color Management
-      - Standards
-      - C++
-    serviceName: OpenColorIO
-    serviceCategory: API
-  - name: OpenTimelineIO
-    baseURL: ''
-    tags:
-      - Editorial
-      - Timeline
-      - Standards
-      - Python
-    serviceName: OpenTimelineIO
-    serviceCategory: API
-  - name: Open Shading Language
-    baseURL: ''
-    tags:
-      - Shading
-      - Rendering
-      - Standards
-      - C++
-    serviceName: Open Shading Language
-    serviceCategory: API
-  - name: MaterialX
-    baseURL: ''
-    tags:
-      - Materials
-      - Shading
-      - Standards
-      - XML
-    serviceName: MaterialX
-    serviceCategory: API
-  - name: OpenCue
-    baseURL: ''
-    tags:
-      - Render Management
-      - VFX
-      - Python
-    serviceName: OpenCue
-    serviceCategory: API
-  - name: OpenImageIO
-    baseURL: ''
-    tags:
-      - Image Processing
-      - C++
-      - VFX
-    serviceName: OpenImageIO
-    serviceCategory: API
-  - name: OpenFX
-    baseURL: ''
-    tags:
-      - Visual Effects
-      - Plugin API
-      - Standards
-      - C++
-    serviceName: OpenFX
-    serviceCategory: API
-  - name: OpenAPV
-    baseURL: ''
-    tags:
-      - Video Codec
-      - Standards
-      - C
-    serviceName: OpenAPV
-    serviceCategory: API
-  - name: OpenPBR
-    baseURL: ''
-    tags:
-      - Rendering
-      - Materials
-      - Standards
-    serviceName: OpenPBR
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+      - membership_tier
+principles:
+  - name: Visibility
+    description: There is no ASWF invoice to track. Visibility means cataloging which ASWF libraries
+      (OpenEXR, OpenVDB, OpenColorIO, etc.) are linked into internal pipelines, and the build/CI cost
+      of maintaining those integrations.
+  - name: Allocation
+    description: Allocate the compute and storage cost of ASWF-dependent workloads (render farms, color
+      pipelines, image conversion) to the consuming production or studio cost center.
+  - name: Optimization
+    description: Optimize through caching of build artifacts (aswf-docker images), pinning library versions,
+      and choosing the right project for the workload (e.g. OpenImageIO vs custom image code).
+  - name: Accountability
+    description: Studio engineering leadership owns the build/CI cost; the LF membership line, where it
+      exists, is owned by studio leadership or a consortium-relations function.
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
