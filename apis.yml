@@ -236,6 +236,8 @@ apis:
     url: https://github.com/AcademySoftwareFoundation/OpenPBR
 
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/academysoftwarefoundation
 - type: Website
   url: https://www.aswf.io/
 - type: Documentation

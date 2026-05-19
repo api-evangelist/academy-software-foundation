@@ -1,0 +1,76 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Academy Software Foundation - OpenCue API — Hosts
+  description: 'Academy Software Foundation - OpenCue API — Hosts. 1 operations. Lead operation: Academy Software Foundation
+    List Hosts. Self-contained Naftiko capability covering one Academy Software Foundation business surface.'
+  tags:
+  - Academy Software Foundation
+  - Hosts
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ACADEMY_SOFTWARE_FOUNDATION_API_KEY: ACADEMY_SOFTWARE_FOUNDATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: opencue-hosts
+    baseUri: http://localhost:8080
+    description: Academy Software Foundation - OpenCue API — Hosts business capability. Self-contained, no shared references.
+    resources:
+    - name: api-host
+      path: /api/host
+      operations:
+      - name: listhosts
+        method: GET
+        description: Academy Software Foundation List Hosts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: state
+          in: query
+          type: string
+          description: Filter hosts by state (UP, DOWN, REPAIR)
+  exposes:
+  - type: rest
+    namespace: opencue-hosts-rest
+    port: 8080
+    description: REST adapter for Academy Software Foundation - OpenCue API — Hosts. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/host
+      name: api-host
+      description: REST surface for api-host.
+      operations:
+      - method: GET
+        name: listhosts
+        description: Academy Software Foundation List Hosts
+        call: opencue-hosts.listhosts
+        with:
+          state: rest.state
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: opencue-hosts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Academy Software Foundation - OpenCue API — Hosts. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: academy-software-foundation-list-hosts
+      description: Academy Software Foundation List Hosts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: opencue-hosts.listhosts
+      with:
+        state: tools.state
+      outputParameters:
+      - type: object
+        mapping: $.

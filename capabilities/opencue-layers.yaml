@@ -1,0 +1,77 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Academy Software Foundation - OpenCue API — Layers
+  description: 'Academy Software Foundation - OpenCue API — Layers. 1 operations. Lead operation: Academy Software Foundation
+    List Layers. Self-contained Naftiko capability covering one Academy Software Foundation business surface.'
+  tags:
+  - Academy Software Foundation
+  - Layers
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ACADEMY_SOFTWARE_FOUNDATION_API_KEY: ACADEMY_SOFTWARE_FOUNDATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: opencue-layers
+    baseUri: http://localhost:8080
+    description: Academy Software Foundation - OpenCue API — Layers business capability. Self-contained, no shared references.
+    resources:
+    - name: api-job-job_id-layer
+      path: /api/job/{job_id}/layer
+      operations:
+      - name: listlayers
+        method: GET
+        description: Academy Software Foundation List Layers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: job_id
+          in: path
+          type: string
+          description: The job identifier
+          required: true
+  exposes:
+  - type: rest
+    namespace: opencue-layers-rest
+    port: 8080
+    description: REST adapter for Academy Software Foundation - OpenCue API — Layers. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/job/{job-id}/layer
+      name: api-job-job-id-layer
+      description: REST surface for api-job-job_id-layer.
+      operations:
+      - method: GET
+        name: listlayers
+        description: Academy Software Foundation List Layers
+        call: opencue-layers.listlayers
+        with:
+          job_id: rest.job_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: opencue-layers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Academy Software Foundation - OpenCue API — Layers. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: academy-software-foundation-list-layers
+      description: Academy Software Foundation List Layers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: opencue-layers.listlayers
+      with:
+        job_id: tools.job_id
+      outputParameters:
+      - type: object
+        mapping: $.
