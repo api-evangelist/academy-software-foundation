@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ErrorResponse",
+  "title": "ErrorResponse",
+  "type": "object",
+  "description": "Error response",
+  "properties": {
+    "error": {
+      "type": "string",
+      "description": "Error message",
+      "example": "Job not found"
+    },
+    "code": {
+      "type": "integer",
+      "description": "Error code",
+      "example": 404
+    }
+  }
+}

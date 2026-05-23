@@ -1,0 +1,126 @@
+{
+  "provider": "Academy Software Foundation",
+  "providerId": "academy-software-foundation",
+  "kind": "json-structure",
+  "description": "Structural overview of the Academy Software Foundation API surface; extracted from openapi/.",
+  "schemaCount": 10,
+  "operationCount": 6,
+  "schemas": [
+    {
+      "name": "Show",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "ShowList",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Job",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "JobList",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Layer",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "LayerList",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Host",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "HostList",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "SuccessResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ErrorResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/api/show",
+      "operationId": "listShows",
+      "summary": "Academy Software Foundation List Shows",
+      "tags": [
+        "Shows"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/show/{show_id}/job",
+      "operationId": "listJobs",
+      "summary": "Academy Software Foundation List Jobs for Show",
+      "tags": [
+        "Jobs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/job/{job_id}",
+      "operationId": "getJob",
+      "summary": "Academy Software Foundation Get Job",
+      "tags": [
+        "Jobs"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/job/{job_id}",
+      "operationId": "killJob",
+      "summary": "Academy Software Foundation Kill Job",
+      "tags": [
+        "Jobs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/job/{job_id}/layer",
+      "operationId": "listLayers",
+      "summary": "Academy Software Foundation List Layers",
+      "tags": [
+        "Layers"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/host",
+      "operationId": "listHosts",
+      "summary": "Academy Software Foundation List Hosts",
+      "tags": [
+        "Hosts"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "operationId": "listLayers",
+  "method": "GET",
+  "path": "/api/job/{job_id}/layer",
+  "summary": "Academy Software Foundation List Layers",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "listLayers200Example",
+      "example": {
+        "layers": [
+          {
+            "id": "layer-ghi789",
+            "name": "render",
+            "type": "RENDER",
+            "state": "RUNNING",
+            "minCores": 100,
+            "maxCores": 2000,
+            "threadable": false,
+            "totalFrames": 100,
+            "doneFrames": 45
+          }
+        ]
+      }
+    }
+  ]
+}

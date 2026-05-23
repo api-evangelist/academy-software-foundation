@@ -1,0 +1,25 @@
+{
+  "operationId": "listShows",
+  "method": "GET",
+  "path": "/api/show",
+  "summary": "Academy Software Foundation List Shows",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "listShows200Example",
+      "example": {
+        "shows": [
+          {
+            "id": "show-abc123",
+            "name": "feature_film_2026",
+            "active": true,
+            "defaultMinCores": 100,
+            "defaultMaxCores": 5000
+          }
+        ]
+      }
+    }
+  ]
+}

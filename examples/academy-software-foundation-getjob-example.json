@@ -1,0 +1,26 @@
+{
+  "operationId": "getJob",
+  "method": "GET",
+  "path": "/api/job/{job_id}",
+  "summary": "Academy Software Foundation Get Job",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "getJob200Example",
+      "example": {
+        "id": "job-def456",
+        "name": "feature_film_2026-shot_001-render_v001",
+        "show": "feature_film_2026",
+        "state": "RUNNING",
+        "priority": 100,
+        "totalFrames": 100,
+        "doneFrames": 45,
+        "runningFrames": 8,
+        "deadFrames": 0,
+        "waitingFrames": 47
+      }
+    }
+  ]
+}

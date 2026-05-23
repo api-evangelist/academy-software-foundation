@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ShowList",
+  "title": "ShowList",
+  "type": "object",
+  "description": "List of shows",
+  "properties": {
+    "shows": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Show"
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LayerList",
+  "title": "LayerList",
+  "type": "object",
+  "description": "List of layers",
+  "properties": {
+    "layers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Layer"
+      }
+    }
+  }
+}

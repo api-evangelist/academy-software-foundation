@@ -1,0 +1,17 @@
+name: Academy Software Foundation Domain Vocabulary
+provider: Academy Software Foundation
+providerId: academy-software-foundation
+description: Tag-derived vocabulary for the Academy Software Foundation API surface; sourced from openapi/ tags.
+terms:
+- term: Jobs
+  description: Manage render jobs submitted to the render farm
+- term: Layers
+  description: Manage layers within a render job
+- term: Frames
+  description: Manage individual render frames
+- term: Hosts
+  description: Manage render host machines in the farm
+- term: Shows
+  description: Manage shows (productions) in OpenCue
+- term: Subscriptions
+  description: Manage show subscriptions to facility allocations
