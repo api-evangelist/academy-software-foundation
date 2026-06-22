@@ -2,20 +2,13 @@
   "repo": "academy-software-foundation",
   "feeds": [
     {
-      "source": "https://www.aswf.io/news/feed/",
-      "feed_url": "https://www.aswf.io/news/feed/",
-      "title": "",
-      "saved": 0,
+      "source": "https://www.aswf.io/news/",
+      "feed_url": "https://www.aswf.io/feed/",
+      "title": "Academy Software Foundation News & Events",
+      "saved": 1,
       "method": "feed"
-    },
-    {
-      "source": "https://github.com/AcademySoftwareFoundation",
-      "feed_url": "https://github.com/AcademySoftwareFoundation",
-      "title": "",
-      "saved": 0,
-      "method": "none"
     }
   ],
-  "post_count": 10,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 11,
+  "fetched": "2026-06-21T17:00:00Z"
 }
