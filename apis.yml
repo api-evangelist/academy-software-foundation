@@ -163,7 +163,7 @@ apis:
     - url: json-schema/opencue-job-schema.json
       type: JSONSchema
     - url: examples/opencue-job-example.json
-      type: Example
+      type: Examples
   - aid: academy-software-foundation:openimagedio
     name: OpenImageIO
     description: >-
@@ -298,7 +298,7 @@ common:
   - url: rules/academy-software-foundation-spectral-rules.yml
     type: SpectralRules
   - url: capabilities/render-farm-management.yaml
-    type: NaftikoCapability
+    type: X-NaftikoCapability
   - url: vocabulary/academy-software-foundation-vocabulary.yaml
     type: Vocabulary
 maintainers:
