@@ -236,6 +236,8 @@ apis:
       url: https://github.com/AcademySoftwareFoundation/OpenPBR
 
 common:
+  - type: DomainSecurity
+    url: security/academy-software-foundation-domain-security.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/academysoftwarefoundation
   - type: Website

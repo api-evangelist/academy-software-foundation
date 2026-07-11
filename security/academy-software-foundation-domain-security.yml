@@ -1,0 +1,32 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.aswf.io
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep  6 18:54:28 2026 GMT
+  hsts: true
+  hsts_max_age: 300
+- host: openexr.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  3 20:19:25 2026 GMT
+  hsts: false
+- host: www.openvdb.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 30 16:04:23 2026 GMT
+  hsts: false
+domains:
+- domain: aswf.io
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none
+- domain: openexr.com
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false
