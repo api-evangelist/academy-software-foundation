@@ -1,193 +1,213 @@
+# academy-software-foundation — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - path-params-casing: snake @ 100% (n=4)
+#   - operationid-casing: camel @ 100% (n=6)
+#   - schema-names-casing: pascal @ 100% (n=10)
+#   - schema-properties-casing: snake @ 63% (n=41)
+#   - error-schema-defined: ErrorResponse
+#   - merge: kept 21 existing, added 4 measured, upgraded 0
+#   - added: operationid-casing, schema-names-casing, schema-properties-casing, error-schema-defined
+extends:
+  - spectral:oas
 rules:
-
-  # INFO / METADATA
   info-title-required:
     description: Info title must be present and start with "Academy Software Foundation"
     severity: error
-    given: '$.info'
+    given: $.info
     then:
       field: title
       function: pattern
       functionOptions:
-        match: '^Academy Software Foundation'
-
+        match: ^Academy Software Foundation
   info-description-required:
     description: Info description must be present and be descriptive
     severity: error
-    given: '$.info'
+    given: $.info
     then:
       field: description
       function: truthy
-
   info-version-required:
     description: Info version must be present
     severity: error
-    given: '$.info'
+    given: $.info
     then:
       field: version
       function: truthy
-
-  # OPENAPI VERSION
   openapi-version-3:
     description: Must use OpenAPI 3.0.x
     severity: error
-    given: '$'
+    given: $
     then:
       field: openapi
       function: pattern
       functionOptions:
-        match: '^3\.0\.'
-
-  # SERVERS
+        match: ^3\.0\.
   servers-required:
     description: At least one server must be defined
     severity: error
-    given: '$'
+    given: $
     then:
       field: servers
       function: truthy
-
   servers-description-required:
     description: Servers should have descriptions
     severity: warn
-    given: '$.servers[*]'
+    given: $.servers[*]
     then:
       field: description
       function: truthy
-
-  # PATHS
   paths-kebab-case:
     description: Path segments should use kebab-case or snake_case
     severity: warn
-    given: '$.paths'
+    given: $.paths
     then:
       field: '@key'
       function: pattern
       functionOptions:
-        match: '^(\/[a-z0-9_\-\{\}]*)*$'
-
-  # OPERATIONS
+        match: ^(\/[a-z0-9_\-\{\}]*)*$
   operation-summary-required:
     description: Every operation must have a summary
     severity: error
-    given: '$.paths[*][get,post,put,patch,delete]'
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: summary
       function: truthy
-
   operation-summary-prefix:
     description: Operation summaries should start with the provider name
     severity: warn
-    given: '$.paths[*][get,post,put,patch,delete]'
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: summary
       function: pattern
       functionOptions:
-        match: '^Academy Software Foundation'
-
+        match: ^Academy Software Foundation
   operation-description-required:
     description: Every operation must have a description
     severity: error
-    given: '$.paths[*][get,post,put,patch,delete]'
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: description
       function: truthy
-
   operation-id-required:
     description: Every operation must have an operationId
     severity: error
-    given: '$.paths[*][get,post,put,patch,delete]'
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: operationId
       function: truthy
-
   operation-tags-required:
     description: Every operation must have at least one tag
     severity: error
-    given: '$.paths[*][get,post,put,patch,delete]'
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: tags
       function: truthy
-
-  # PARAMETERS
   parameter-description-required:
     description: Path and query parameters must have descriptions
     severity: error
-    given: '$.paths[*][get,post,put,patch,delete].parameters[*]'
+    given: $.paths[*][get,post,put,patch,delete].parameters[*]
     then:
       field: description
       function: truthy
-
   parameter-example-recommended:
     description: Parameters should have example values
     severity: info
-    given: '$.paths[*][get,post,put,patch,delete].parameters[*]'
+    given: $.paths[*][get,post,put,patch,delete].parameters[*]
     then:
       field: example
       function: truthy
-
-  # RESPONSES
   response-success-required:
     description: Every operation must have a 2xx success response
     severity: error
-    given: '$.paths[*][get,post,put,patch,delete].responses'
+    given: $.paths[*][get,post,put,patch,delete].responses
     then:
       function: schema
       functionOptions:
         schema:
           anyOf:
-            - required: ['200']
-            - required: ['201']
-            - required: ['204']
-
+          - required:
+            - '200'
+          - required:
+            - '201'
+          - required:
+            - '204'
   response-description-required:
     description: Every response must have a description
     severity: error
-    given: '$.paths[*][get,post,put,patch,delete].responses[*]'
+    given: $.paths[*][get,post,put,patch,delete].responses[*]
     then:
       field: description
       function: truthy
-
-  # SCHEMAS
   schema-description-recommended:
     description: Component schemas should have descriptions
     severity: warn
-    given: '$.components.schemas[*]'
+    given: $.components.schemas[*]
     then:
       field: description
       function: truthy
-
   schema-property-description-recommended:
     description: Schema properties should have descriptions
     severity: info
-    given: '$.components.schemas[*].properties[*]'
+    given: $.components.schemas[*].properties[*]
     then:
       field: description
       function: truthy
-
-  # HTTP CONVENTIONS
   get-no-request-body:
     description: GET operations must not have request bodies
     severity: error
-    given: '$.paths[*].get'
+    given: $.paths[*].get
     then:
       field: requestBody
       function: falsy
-
   delete-no-request-body:
     description: DELETE operations should not have request bodies
     severity: warn
-    given: '$.paths[*].delete'
+    given: $.paths[*].delete
     then:
       field: requestBody
       function: falsy
-
-  # GENERAL QUALITY
   no-empty-descriptions:
     description: Descriptions must not be empty
     severity: error
-    given: '$..description'
+    given: $..description
     then:
       function: pattern
       functionOptions:
-        match: '.+'
+        match: .+
+  operationid-casing:
+    description: Operation IDs should be camelCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then:
+      function: casing
+      functionOptions:
+        type: camel
+  schema-names-casing:
+    description: Component schema names should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: pascal
+  schema-properties-casing:
+    description: Schema properties should be snake_case (the dominant convention in this API).
+    severity: info
+    given: $.components.schemas[*].properties
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: snake
+  error-schema-defined:
+    description: A shared error schema (ErrorResponse) should be defined for error payloads.
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: ErrorResponse
+      function: truthy
