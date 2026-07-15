@@ -236,6 +236,8 @@ apis:
       url: https://github.com/AcademySoftwareFoundation/OpenPBR
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/academy-software-foundation-agentic-access.yml
   - type: DomainSecurity
     url: security/academy-software-foundation-domain-security.yml
   - type: LinkedIn
