@@ -1,0 +1,234 @@
+openapi: 3.0.3
+info:
+  title: Academy Software Foundation - OpenCue Hosts Jobs API
+  description: OpenCue is an open source render management system developed by Sony Pictures Imageworks and hosted by the Academy Software Foundation. This specification documents the gRPC/REST API surface for managing render jobs, layers, frames, hosts, shows, and subscriptions in an OpenCue render farm deployment.
+  version: 1.0.0
+  contact:
+    url: https://www.opencue.io/
+  x-generated-from: documentation
+servers:
+- url: http://localhost:8080
+  description: Local OpenCue REST gateway (default port)
+- url: http://opencue-gateway:8080
+  description: OpenCue REST gateway in containerized deployment
+security: []
+tags:
+- name: Jobs
+  description: Manage render jobs submitted to the render farm
+paths:
+  /api/show/{show_id}/job:
+    get:
+      operationId: listJobs
+      summary: Academy Software Foundation List Jobs for Show
+      description: List all pending, running, and recently finished jobs for a show.
+      tags:
+      - Jobs
+      parameters:
+      - name: show_id
+        in: path
+        required: true
+        description: The show identifier
+        schema:
+          type: string
+        example: show-abc123
+      - name: state
+        in: query
+        required: false
+        description: Filter jobs by state (PENDING, RUNNING, FINISHED, PAUSED)
+        schema:
+          type: string
+          enum:
+          - PENDING
+          - RUNNING
+          - FINISHED
+          - PAUSED
+        example: RUNNING
+      responses:
+        '200':
+          description: List of jobs for the show
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobList'
+              examples:
+                listJobs200Example:
+                  summary: Default listJobs 200 response
+                  x-microcks-default: true
+                  value:
+                    jobs:
+                    - id: job-def456
+                      name: feature_film_2026-shot_001-render_v001
+                      show: feature_film_2026
+                      state: RUNNING
+                      priority: 100
+                      totalFrames: 100
+                      doneFrames: 45
+                      runningFrames: 8
+                      deadFrames: 0
+                      waitingFrames: 47
+        '404':
+          description: Show not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/job/{job_id}:
+    get:
+      operationId: getJob
+      summary: Academy Software Foundation Get Job
+      description: Get details for a specific render job.
+      tags:
+      - Jobs
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        description: The job identifier
+        schema:
+          type: string
+        example: job-def456
+      responses:
+        '200':
+          description: Job details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+              examples:
+                getJob200Example:
+                  summary: Default getJob 200 response
+                  x-microcks-default: true
+                  value:
+                    id: job-def456
+                    name: feature_film_2026-shot_001-render_v001
+                    show: feature_film_2026
+                    state: RUNNING
+                    priority: 100
+                    totalFrames: 100
+                    doneFrames: 45
+                    runningFrames: 8
+                    deadFrames: 0
+                    waitingFrames: 47
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: killJob
+      summary: Academy Software Foundation Kill Job
+      description: Kill a running or paused render job.
+      tags:
+      - Jobs
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        description: The job identifier to kill
+        schema:
+          type: string
+        example: job-def456
+      responses:
+        '200':
+          description: Job killed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Job:
+      type: object
+      description: A render job in OpenCue
+      properties:
+        id:
+          type: string
+          description: Unique job identifier
+          example: job-def456
+        name:
+          type: string
+          description: Full job name
+          example: feature_film_2026-shot_001-render_v001
+        show:
+          type: string
+          description: Show name this job belongs to
+          example: feature_film_2026
+        state:
+          type: string
+          description: Current job state
+          example: RUNNING
+          enum:
+          - PENDING
+          - RUNNING
+          - FINISHED
+          - PAUSED
+        priority:
+          type: integer
+          description: Job priority (higher is more important)
+          example: 100
+        totalFrames:
+          type: integer
+          description: Total number of frames in the job
+          example: 100
+        doneFrames:
+          type: integer
+          description: Number of completed frames
+          example: 45
+        runningFrames:
+          type: integer
+          description: Number of currently running frames
+          example: 8
+        deadFrames:
+          type: integer
+          description: Number of failed/dead frames
+          example: 0
+        waitingFrames:
+          type: integer
+          description: Number of frames waiting to be dispatched
+          example: 47
+    ErrorResponse:
+      type: object
+      description: Error response
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: Job not found
+        code:
+          type: integer
+          description: Error code
+          example: 404
+    SuccessResponse:
+      type: object
+      description: Generic success response
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: Operation completed successfully
+    JobList:
+      type: object
+      description: List of jobs
+      properties:
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'

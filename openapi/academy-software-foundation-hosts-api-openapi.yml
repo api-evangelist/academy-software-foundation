@@ -1,0 +1,138 @@
+openapi: 3.0.3
+info:
+  title: Academy Software Foundation - OpenCue Hosts API
+  description: OpenCue is an open source render management system developed by Sony Pictures Imageworks and hosted by the Academy Software Foundation. This specification documents the gRPC/REST API surface for managing render jobs, layers, frames, hosts, shows, and subscriptions in an OpenCue render farm deployment.
+  version: 1.0.0
+  contact:
+    url: https://www.opencue.io/
+  x-generated-from: documentation
+servers:
+- url: http://localhost:8080
+  description: Local OpenCue REST gateway (default port)
+- url: http://opencue-gateway:8080
+  description: OpenCue REST gateway in containerized deployment
+security: []
+tags:
+- name: Hosts
+  description: Manage render host machines in the farm
+paths:
+  /api/host:
+    get:
+      operationId: listHosts
+      summary: Academy Software Foundation List Hosts
+      description: List all render host machines registered in the farm.
+      tags:
+      - Hosts
+      parameters:
+      - name: state
+        in: query
+        required: false
+        description: Filter hosts by state (UP, DOWN, REPAIR)
+        schema:
+          type: string
+          enum:
+          - UP
+          - DOWN
+          - REPAIR
+        example: UP
+      responses:
+        '200':
+          description: List of render hosts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HostList'
+              examples:
+                listHosts200Example:
+                  summary: Default listHosts 200 response
+                  x-microcks-default: true
+                  value:
+                    hosts:
+                    - id: host-jkl012
+                      name: render-host-001.studio.local
+                      state: UP
+                      lock: OPEN
+                      totalCores: 64
+                      idleCores: 32
+                      totalMemory: 131072
+                      idleMemory: 65536
+                      load: 35
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      description: Error response
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: Job not found
+        code:
+          type: integer
+          description: Error code
+          example: 404
+    Host:
+      type: object
+      description: A render host machine
+      properties:
+        id:
+          type: string
+          description: Unique host identifier
+          example: host-jkl012
+        name:
+          type: string
+          description: Hostname
+          example: render-host-001.studio.local
+        state:
+          type: string
+          description: Host state
+          example: UP
+          enum:
+          - UP
+          - DOWN
+          - REPAIR
+        lock:
+          type: string
+          description: Host lock state
+          example: OPEN
+          enum:
+          - OPEN
+          - LOCKED
+          - NIMBY_LOCKED
+        totalCores:
+          type: integer
+          description: Total CPU cores on the host
+          example: 64
+        idleCores:
+          type: integer
+          description: Currently idle CPU cores
+          example: 32
+        totalMemory:
+          type: integer
+          description: Total memory in MB
+          example: 131072
+        idleMemory:
+          type: integer
+          description: Currently idle memory in MB
+          example: 65536
+        load:
+          type: integer
+          description: Current system load (percentage)
+          example: 35
+    HostList:
+      type: object
+      description: List of hosts
+      properties:
+        hosts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Host'

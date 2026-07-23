@@ -1,0 +1,129 @@
+openapi: 3.0.3
+info:
+  title: Academy Software Foundation - OpenCue Hosts Layers API
+  description: OpenCue is an open source render management system developed by Sony Pictures Imageworks and hosted by the Academy Software Foundation. This specification documents the gRPC/REST API surface for managing render jobs, layers, frames, hosts, shows, and subscriptions in an OpenCue render farm deployment.
+  version: 1.0.0
+  contact:
+    url: https://www.opencue.io/
+  x-generated-from: documentation
+servers:
+- url: http://localhost:8080
+  description: Local OpenCue REST gateway (default port)
+- url: http://opencue-gateway:8080
+  description: OpenCue REST gateway in containerized deployment
+security: []
+tags:
+- name: Layers
+  description: Manage layers within a render job
+paths:
+  /api/job/{job_id}/layer:
+    get:
+      operationId: listLayers
+      summary: Academy Software Foundation List Layers
+      description: List all layers within a render job.
+      tags:
+      - Layers
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        description: The job identifier
+        schema:
+          type: string
+        example: job-def456
+      responses:
+        '200':
+          description: List of layers for the job
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LayerList'
+              examples:
+                listLayers200Example:
+                  summary: Default listLayers 200 response
+                  x-microcks-default: true
+                  value:
+                    layers:
+                    - id: layer-ghi789
+                      name: render
+                      type: RENDER
+                      state: RUNNING
+                      minCores: 100
+                      maxCores: 2000
+                      threadable: false
+                      totalFrames: 100
+                      doneFrames: 45
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Layer:
+      type: object
+      description: A layer within a render job
+      properties:
+        id:
+          type: string
+          description: Unique layer identifier
+          example: layer-ghi789
+        name:
+          type: string
+          description: Layer name
+          example: render
+        type:
+          type: string
+          description: Layer type
+          example: RENDER
+          enum:
+          - RENDER
+          - UTIL
+        state:
+          type: string
+          description: Layer state
+          example: RUNNING
+        minCores:
+          type: integer
+          description: Minimum cores required per frame
+          example: 100
+        maxCores:
+          type: integer
+          description: Maximum cores allowed per frame
+          example: 2000
+        threadable:
+          type: boolean
+          description: Whether frames can run multi-threaded
+          example: false
+        totalFrames:
+          type: integer
+          description: Total number of frames in this layer
+          example: 100
+        doneFrames:
+          type: integer
+          description: Number of completed frames in this layer
+          example: 45
+    ErrorResponse:
+      type: object
+      description: Error response
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: Job not found
+        code:
+          type: integer
+          description: Error code
+          example: 404
+    LayerList:
+      type: object
+      description: List of layers
+      properties:
+        layers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Layer'

@@ -1,0 +1,98 @@
+openapi: 3.0.3
+info:
+  title: Academy Software Foundation - OpenCue Hosts Shows API
+  description: OpenCue is an open source render management system developed by Sony Pictures Imageworks and hosted by the Academy Software Foundation. This specification documents the gRPC/REST API surface for managing render jobs, layers, frames, hosts, shows, and subscriptions in an OpenCue render farm deployment.
+  version: 1.0.0
+  contact:
+    url: https://www.opencue.io/
+  x-generated-from: documentation
+servers:
+- url: http://localhost:8080
+  description: Local OpenCue REST gateway (default port)
+- url: http://opencue-gateway:8080
+  description: OpenCue REST gateway in containerized deployment
+security: []
+tags:
+- name: Shows
+  description: Manage shows (productions) in OpenCue
+paths:
+  /api/show:
+    get:
+      operationId: listShows
+      summary: Academy Software Foundation List Shows
+      description: List all active shows (productions) registered in OpenCue.
+      tags:
+      - Shows
+      responses:
+        '200':
+          description: List of shows
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShowList'
+              examples:
+                listShows200Example:
+                  summary: Default listShows 200 response
+                  x-microcks-default: true
+                  value:
+                    shows:
+                    - id: show-abc123
+                      name: feature_film_2026
+                      active: true
+                      defaultMinCores: 100
+                      defaultMaxCores: 5000
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ShowList:
+      type: object
+      description: List of shows
+      properties:
+        shows:
+          type: array
+          items:
+            $ref: '#/components/schemas/Show'
+    ErrorResponse:
+      type: object
+      description: Error response
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: Job not found
+        code:
+          type: integer
+          description: Error code
+          example: 404
+    Show:
+      type: object
+      description: A show (production) in OpenCue
+      properties:
+        id:
+          type: string
+          description: Unique show identifier
+          example: show-abc123
+        name:
+          type: string
+          description: Show name
+          example: feature_film_2026
+        active:
+          type: boolean
+          description: Whether the show is currently active
+          example: true
+        defaultMinCores:
+          type: integer
+          description: Default minimum cores for jobs in this show
+          example: 100
+        defaultMaxCores:
+          type: integer
+          description: Default maximum cores for jobs in this show
+          example: 5000
