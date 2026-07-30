@@ -8,9 +8,21 @@ description: >-
   OpenShadingLanguage, MaterialX, and more. These projects form the backbone of
   modern film and media production pipelines worldwide.
 type: Index
+accessModel:
+  pricing: paid
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Paid
+  confidence: medium
+  source:
+  - finops
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/academy-software-foundation.png
 tags:
   - Animation
   - Color Management
@@ -27,214 +39,239 @@ url: >-
   https://raw.githubusercontent.com/api-evangelist/academy-software-foundation/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: academy-software-foundation:openexr
-    name: OpenEXR
-    description: >-
-      OpenEXR is an open standard high-dynamic-range (HDR) image file format
-      specification and reference implementation developed by Industrial Light
-      and Magic. It is the industry standard for visual effects and animation
-      and provides a C++ library for reading and writing EXR image files.
-    humanURL: https://openexr.com/
-    tags:
-    - Image Format
-    - HDR
-    - Standards
-    - C++
-    properties:
-    - type: Documentation
-      url: https://openexr.com/
-    - type: GitHubRepository
-      url: https://github.com/AcademySoftwareFoundation/openexr
-
-  - aid: academy-software-foundation:openvdb
-    name: OpenVDB
-    description: >-
-      OpenVDB is an Academy Award-winning open source C++ library for efficient
-      storage and manipulation of sparse volumetric data discretized on
-      three-dimensional grids. It is the industry standard for volumetric
-      effects in film and visual effects production.
-    humanURL: https://www.openvdb.org/
-    tags:
-    - Volumetric Data
-    - C++
-    - Rendering
-    - Standards
-    properties:
-    - type: Documentation
-      url: https://www.openvdb.org/documentation/
-    - type: GitHubRepository
-      url: https://github.com/AcademySoftwareFoundation/openvdb
-
-  - aid: academy-software-foundation:opencolorio
-    name: OpenColorIO
-    description: >-
-      OpenColorIO (OCIO) is a complete color management solution geared towards
-      motion picture production, enabling color transforms and image display to
-      be handled in a consistent manner across many applications. It is used by
-      major VFX studios and DCC tools including Maya, Nuke, and Houdini.
-    humanURL: https://opencolorio.org/
-    tags:
-    - Color Management
-    - Standards
-    - C++
-    properties:
-    - type: Documentation
-      url: https://opencolorio.readthedocs.io/
-    - type: GitHubRepository
-      url: https://github.com/AcademySoftwareFoundation/OpenColorIO
-
-  - aid: academy-software-foundation:opentimelineio
-    name: OpenTimelineIO
-    description: >-
-      OpenTimelineIO (OTIO) is an open source API and interchange format for
-      editorial timeline information. It is designed to be more expressive than
-      existing formats while still being easy to read and write, enabling better
-      interoperability between editing tools.
-    humanURL: https://opentimeline.io/
-    tags:
-    - Editorial
-    - Timeline
-    - Standards
-    - Python
-    properties:
-    - type: Documentation
-      url: https://opentimelineio.readthedocs.io/
-    - type: GitHubRepository
-      url: https://github.com/AcademySoftwareFoundation/OpenTimelineIO
-
-  - aid: academy-software-foundation:openshadinglanguage
-    name: Open Shading Language
-    description: >-
-      Open Shading Language (OSL) is a small but rich language for
-      programmable shading in advanced renderers and other applications. It is
-      ideal for describing materials, lights, displacement, and pattern
-      generation and is supported by many production renderers.
-    humanURL: https://github.com/AcademySoftwareFoundation/OpenShadingLanguage
-    tags:
-    - Shading
-    - Rendering
-    - Standards
-    - C++
-    properties:
-    - type: Documentation
-      url: https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/blob/main/src/doc/osl-languagespec.pdf
-    - type: GitHubRepository
-      url: https://github.com/AcademySoftwareFoundation/OpenShadingLanguage
-
-  - aid: academy-software-foundation:materialx
-    name: MaterialX
-    description: >-
-      MaterialX is an open standard for the exchange of rich material and
-      look-development content between applications and renderers. It provides
-      a language for defining surface and volume shading patterns that can be
-      used across different rendering systems and DCC applications.
-    humanURL: https://www.materialx.org/
-    tags:
-    - Materials
-    - Shading
-    - Standards
-    - XML
-    properties:
-    - type: Documentation
-      url: https://materialx.org/docs/
-    - type: GitHubRepository
-      url: https://github.com/AcademySoftwareFoundation/MaterialX
-
-  - aid: academy-software-foundation:opencue
-    name: OpenCue
-    description: >-
-      OpenCue is an open source render management system for visual effects and
-      animation productions. It enables studios to deploy and manage a render
-      farm, schedule jobs, and track progress across large numbers of render
-      nodes. It was originally developed by Sony Pictures Imageworks.
-    humanURL: https://www.opencue.io/
-    tags:
-    - Render Management
-    - VFX
-    - Python
-    properties:
-    - type: Documentation
-      url: https://www.opencue.io/docs/
-    - type: GitHubRepository
-      url: https://github.com/AcademySoftwareFoundation/OpenCue
-
-    - url: openapi/academy-software-foundation-opencue.yaml
-      type: OpenAPI
-    - url: json-schema/opencue-job-schema.json
-      type: JSONSchema
-    - url: examples/opencue-job-example.json
-      type: Examples
-  - aid: academy-software-foundation:openimagedio
-    name: OpenImageIO
-    description: >-
-      OpenImageIO (OIIO) is a library for reading, writing, and processing
-      images in a wide variety of file formats. It is used in visual effects
-      and animation production pipelines for texture baking, image compositing,
-      and format conversion.
-    humanURL: https://sites.google.com/site/openimageio/home
-    tags:
-    - Image Processing
-    - C++
-    - VFX
-    properties:
-    - type: Documentation
-      url: https://openimageio.readthedocs.io/
-    - type: GitHubRepository
-      url: https://github.com/AcademySoftwareFoundation/OpenImageIO
-
-  - aid: academy-software-foundation:openfx
-    name: OpenFX
-    description: >-
-      OpenFX is an open standard API for visual effects plug-ins used in
-      compositing and image processing applications. It defines how host
-      applications and image processing plug-ins communicate, enabling
-      interoperability across compositing tools.
-    humanURL: https://openfx.io/
-    tags:
-    - Visual Effects
-    - Plugin API
-    - Standards
-    - C++
-    properties:
-    - type: Documentation
-      url: https://openfx.io/
-    - type: GitHubRepository
-      url: https://github.com/AcademySoftwareFoundation/openfx
-
-  - aid: academy-software-foundation:openapv
-    name: OpenAPV
-    description: >-
-      OpenAPV is an open, royalty-free video codec specification designed for
-      professional video production and post-production workflows. It is
-      optimized for high-quality intermediate video formats used in camera
-      and on-set production pipelines.
-    humanURL: https://github.com/AcademySoftwareFoundation/openapv
-    tags:
-    - Video Codec
-    - Standards
-    - C
-    properties:
-    - type: GitHubRepository
-      url: https://github.com/AcademySoftwareFoundation/openapv
-
-  - aid: academy-software-foundation:openpbr
-    name: OpenPBR
-    description: >-
-      OpenPBR is an open specification and reference implementation for a
-      physically-based shading model. It defines a standard material
-      definition language that can be used across different renderers to
-      achieve consistent appearance.
-    humanURL: https://academysoftwarefoundation.github.io/OpenPBR/
-    tags:
-    - Rendering
-    - Materials
-    - Standards
-    properties:
-    - type: Documentation
-      url: https://academysoftwarefoundation.github.io/OpenPBR/
-    - type: GitHubRepository
-      url: https://github.com/AcademySoftwareFoundation/OpenPBR
-
+- aid: academy-software-foundation:openexr
+  name: OpenEXR
+  description: >-
+    OpenEXR is an open standard high-dynamic-range (HDR) image file format specification and reference
+    implementation developed by Industrial Light and Magic. It is the industry standard for visual effects
+    and animation and provides a C++ library for reading and writing EXR image files.
+  humanURL: https://openexr.com/
+  tags:
+  - Image Format
+  - HDR
+  - Standards
+  - C++
+  properties:
+  - type: Documentation
+    url: https://openexr.com/
+  - type: GitHubRepository
+    url: https://github.com/AcademySoftwareFoundation/openexr
+- aid: academy-software-foundation:openvdb
+  name: OpenVDB
+  description: >-
+    OpenVDB is an Academy Award-winning open source C++ library for efficient storage and manipulation
+    of sparse volumetric data discretized on three-dimensional grids. It is the industry standard for
+    volumetric effects in film and visual effects production.
+  humanURL: https://www.openvdb.org/
+  tags:
+  - Volumetric Data
+  - C++
+  - Rendering
+  - Standards
+  properties:
+  - type: Documentation
+    url: https://www.openvdb.org/documentation/
+  - type: GitHubRepository
+    url: https://github.com/AcademySoftwareFoundation/openvdb
+- aid: academy-software-foundation:opencolorio
+  name: OpenColorIO
+  description: >-
+    OpenColorIO (OCIO) is a complete color management solution geared towards motion picture production,
+    enabling color transforms and image display to be handled in a consistent manner across many applications.
+    It is used by major VFX studios and DCC tools including Maya, Nuke, and Houdini.
+  humanURL: https://opencolorio.org/
+  tags:
+  - Color Management
+  - Standards
+  - C++
+  properties:
+  - type: Documentation
+    url: https://opencolorio.readthedocs.io/
+  - type: GitHubRepository
+    url: https://github.com/AcademySoftwareFoundation/OpenColorIO
+- aid: academy-software-foundation:opentimelineio
+  name: OpenTimelineIO
+  description: >-
+    OpenTimelineIO (OTIO) is an open source API and interchange format for editorial timeline information.
+    It is designed to be more expressive than existing formats while still being easy to read and write,
+    enabling better interoperability between editing tools.
+  humanURL: https://opentimeline.io/
+  tags:
+  - Editorial
+  - Timeline
+  - Standards
+  - Python
+  properties:
+  - type: Documentation
+    url: https://opentimelineio.readthedocs.io/
+  - type: GitHubRepository
+    url: https://github.com/AcademySoftwareFoundation/OpenTimelineIO
+- aid: academy-software-foundation:openshadinglanguage
+  name: Open Shading Language
+  description: >-
+    Open Shading Language (OSL) is a small but rich language for programmable shading in advanced renderers
+    and other applications. It is ideal for describing materials, lights, displacement, and pattern generation
+    and is supported by many production renderers.
+  humanURL: https://github.com/AcademySoftwareFoundation/OpenShadingLanguage
+  tags:
+  - Shading
+  - Rendering
+  - Standards
+  - C++
+  properties:
+  - type: Documentation
+    url: >-
+      https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/blob/main/src/doc/osl-languagespec.pdf
+  - type: GitHubRepository
+    url: https://github.com/AcademySoftwareFoundation/OpenShadingLanguage
+- aid: academy-software-foundation:materialx
+  name: MaterialX
+  description: >-
+    MaterialX is an open standard for the exchange of rich material and look-development content between
+    applications and renderers. It provides a language for defining surface and volume shading patterns
+    that can be used across different rendering systems and DCC applications.
+  humanURL: https://www.materialx.org/
+  tags:
+  - Materials
+  - Shading
+  - Standards
+  - XML
+  properties:
+  - type: Documentation
+    url: https://materialx.org/docs/
+  - type: GitHubRepository
+    url: https://github.com/AcademySoftwareFoundation/MaterialX
+- aid: academy-software-foundation:openimagedio
+  name: OpenImageIO
+  description: >-
+    OpenImageIO (OIIO) is a library for reading, writing, and processing images in a wide variety of file
+    formats. It is used in visual effects and animation production pipelines for texture baking, image
+    compositing, and format conversion.
+  humanURL: https://sites.google.com/site/openimageio/home
+  tags:
+  - Image Processing
+  - C++
+  - VFX
+  properties:
+  - type: Documentation
+    url: https://openimageio.readthedocs.io/
+  - type: GitHubRepository
+    url: https://github.com/AcademySoftwareFoundation/OpenImageIO
+- aid: academy-software-foundation:openfx
+  name: OpenFX
+  description: >-
+    OpenFX is an open standard API for visual effects plug-ins used in compositing and image processing
+    applications. It defines how host applications and image processing plug-ins communicate, enabling
+    interoperability across compositing tools.
+  humanURL: https://openfx.io/
+  tags:
+  - Visual Effects
+  - Plugin API
+  - Standards
+  - C++
+  properties:
+  - type: Documentation
+    url: https://openfx.io/
+  - type: GitHubRepository
+    url: https://github.com/AcademySoftwareFoundation/openfx
+- aid: academy-software-foundation:openapv
+  name: OpenAPV
+  description: >-
+    OpenAPV is an open, royalty-free video codec specification designed for professional video production
+    and post-production workflows. It is optimized for high-quality intermediate video formats used in
+    camera and on-set production pipelines.
+  humanURL: https://github.com/AcademySoftwareFoundation/openapv
+  tags:
+  - Video Codec
+  - Standards
+  - C
+  properties:
+  - type: GitHubRepository
+    url: https://github.com/AcademySoftwareFoundation/openapv
+- aid: academy-software-foundation:openpbr
+  name: OpenPBR
+  description: >-
+    OpenPBR is an open specification and reference implementation for a physically-based shading model.
+    It defines a standard material definition language that can be used across different renderers to
+    achieve consistent appearance.
+  humanURL: https://academysoftwarefoundation.github.io/OpenPBR/
+  tags:
+  - Rendering
+  - Materials
+  - Standards
+  properties:
+  - type: Documentation
+    url: https://academysoftwarefoundation.github.io/OpenPBR/
+  - type: GitHubRepository
+    url: https://github.com/AcademySoftwareFoundation/OpenPBR
+- aid: academy-software-foundation:academy-software-foundation-hosts-api
+  name: Academy Software Foundation Hosts API
+  description: Manage render host machines in the farm
+  humanURL: https://openexr.com/
+  tags:
+  - Hosts
+  properties:
+  - type: OpenAPI
+    url: openapi/academy-software-foundation-hosts-api-openapi.yml
+  - type: Documentation
+    url: https://www.opencue.io/docs/
+  - type: GitHubRepository
+    url: https://github.com/AcademySoftwareFoundation/OpenCue
+  - type: JSONSchema
+    url: json-schema/opencue-job-schema.json
+  - type: Examples
+    url: examples/opencue-job-example.json
+- aid: academy-software-foundation:academy-software-foundation-jobs-api
+  name: Academy Software Foundation Jobs API
+  description: Manage render jobs submitted to the render farm
+  humanURL: https://openexr.com/
+  tags:
+  - Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/academy-software-foundation-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://www.opencue.io/docs/
+  - type: GitHubRepository
+    url: https://github.com/AcademySoftwareFoundation/OpenCue
+  - type: JSONSchema
+    url: json-schema/opencue-job-schema.json
+  - type: Examples
+    url: examples/opencue-job-example.json
+- aid: academy-software-foundation:academy-software-foundation-layers-api
+  name: Academy Software Foundation Layers API
+  description: Manage layers within a render job
+  humanURL: https://openexr.com/
+  tags:
+  - Layers
+  properties:
+  - type: OpenAPI
+    url: openapi/academy-software-foundation-layers-api-openapi.yml
+  - type: Documentation
+    url: https://www.opencue.io/docs/
+  - type: GitHubRepository
+    url: https://github.com/AcademySoftwareFoundation/OpenCue
+  - type: JSONSchema
+    url: json-schema/opencue-job-schema.json
+  - type: Examples
+    url: examples/opencue-job-example.json
+- aid: academy-software-foundation:academy-software-foundation-shows-api
+  name: Academy Software Foundation Shows API
+  description: Manage shows (productions) in OpenCue
+  humanURL: https://openexr.com/
+  tags:
+  - Shows
+  properties:
+  - type: OpenAPI
+    url: openapi/academy-software-foundation-shows-api-openapi.yml
+  - type: Documentation
+    url: https://www.opencue.io/docs/
+  - type: GitHubRepository
+    url: https://github.com/AcademySoftwareFoundation/OpenCue
+  - type: JSONSchema
+    url: json-schema/opencue-job-schema.json
+  - type: Examples
+    url: examples/opencue-job-example.json
 common:
   - type: AgenticAccess
     url: agentic-access/academy-software-foundation-agentic-access.yml
