@@ -1,0 +1,20 @@
+{
+  "provider": "academy-software-foundation",
+  "sources": [
+    "academy-software-foundation-hosts-api-openapi.yml",
+    "academy-software-foundation-jobs-api-openapi.yml",
+    "academy-software-foundation-layers-api-openapi.yml",
+    "academy-software-foundation-shows-api-openapi.yml"
+  ],
+  "outputs": [
+    "academy-software-foundation-hosts-api-openapi.yml",
+    "academy-software-foundation-jobs-api-openapi.yml",
+    "academy-software-foundation-layers-api-openapi.yml",
+    "academy-software-foundation-shows-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

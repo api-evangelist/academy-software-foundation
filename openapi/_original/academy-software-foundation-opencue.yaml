@@ -1,0 +1,517 @@
+openapi: 3.0.3
+info:
+  title: Academy Software Foundation - OpenCue API
+  description: >-
+    OpenCue is an open source render management system developed by Sony Pictures Imageworks
+    and hosted by the Academy Software Foundation. This specification documents the gRPC/REST
+    API surface for managing render jobs, layers, frames, hosts, shows, and subscriptions in
+    an OpenCue render farm deployment.
+  version: 1.0.0
+  contact:
+    url: https://www.opencue.io/
+  x-generated-from: documentation
+servers:
+  - url: http://localhost:8080
+    description: Local OpenCue REST gateway (default port)
+  - url: http://opencue-gateway:8080
+    description: OpenCue REST gateway in containerized deployment
+security: []
+tags:
+  - name: Jobs
+    description: Manage render jobs submitted to the render farm
+  - name: Layers
+    description: Manage layers within a render job
+  - name: Frames
+    description: Manage individual render frames
+  - name: Hosts
+    description: Manage render host machines in the farm
+  - name: Shows
+    description: Manage shows (productions) in OpenCue
+  - name: Subscriptions
+    description: Manage show subscriptions to facility allocations
+paths:
+  /api/show:
+    get:
+      operationId: listShows
+      summary: Academy Software Foundation List Shows
+      description: List all active shows (productions) registered in OpenCue.
+      tags:
+        - Shows
+      responses:
+        '200':
+          description: List of shows
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShowList'
+              examples:
+                listShows200Example:
+                  summary: Default listShows 200 response
+                  x-microcks-default: true
+                  value:
+                    shows:
+                      - id: show-abc123
+                        name: feature_film_2026
+                        active: true
+                        defaultMinCores: 100
+                        defaultMaxCores: 5000
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/show/{show_id}/job:
+    get:
+      operationId: listJobs
+      summary: Academy Software Foundation List Jobs for Show
+      description: List all pending, running, and recently finished jobs for a show.
+      tags:
+        - Jobs
+      parameters:
+        - name: show_id
+          in: path
+          required: true
+          description: The show identifier
+          schema:
+            type: string
+          example: show-abc123
+        - name: state
+          in: query
+          required: false
+          description: Filter jobs by state (PENDING, RUNNING, FINISHED, PAUSED)
+          schema:
+            type: string
+            enum:
+              - PENDING
+              - RUNNING
+              - FINISHED
+              - PAUSED
+          example: RUNNING
+      responses:
+        '200':
+          description: List of jobs for the show
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobList'
+              examples:
+                listJobs200Example:
+                  summary: Default listJobs 200 response
+                  x-microcks-default: true
+                  value:
+                    jobs:
+                      - id: job-def456
+                        name: feature_film_2026-shot_001-render_v001
+                        show: feature_film_2026
+                        state: RUNNING
+                        priority: 100
+                        totalFrames: 100
+                        doneFrames: 45
+                        runningFrames: 8
+                        deadFrames: 0
+                        waitingFrames: 47
+        '404':
+          description: Show not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/job/{job_id}:
+    get:
+      operationId: getJob
+      summary: Academy Software Foundation Get Job
+      description: Get details for a specific render job.
+      tags:
+        - Jobs
+      parameters:
+        - name: job_id
+          in: path
+          required: true
+          description: The job identifier
+          schema:
+            type: string
+          example: job-def456
+      responses:
+        '200':
+          description: Job details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+              examples:
+                getJob200Example:
+                  summary: Default getJob 200 response
+                  x-microcks-default: true
+                  value:
+                    id: job-def456
+                    name: feature_film_2026-shot_001-render_v001
+                    show: feature_film_2026
+                    state: RUNNING
+                    priority: 100
+                    totalFrames: 100
+                    doneFrames: 45
+                    runningFrames: 8
+                    deadFrames: 0
+                    waitingFrames: 47
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: killJob
+      summary: Academy Software Foundation Kill Job
+      description: Kill a running or paused render job.
+      tags:
+        - Jobs
+      parameters:
+        - name: job_id
+          in: path
+          required: true
+          description: The job identifier to kill
+          schema:
+            type: string
+          example: job-def456
+      responses:
+        '200':
+          description: Job killed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/job/{job_id}/layer:
+    get:
+      operationId: listLayers
+      summary: Academy Software Foundation List Layers
+      description: List all layers within a render job.
+      tags:
+        - Layers
+      parameters:
+        - name: job_id
+          in: path
+          required: true
+          description: The job identifier
+          schema:
+            type: string
+          example: job-def456
+      responses:
+        '200':
+          description: List of layers for the job
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LayerList'
+              examples:
+                listLayers200Example:
+                  summary: Default listLayers 200 response
+                  x-microcks-default: true
+                  value:
+                    layers:
+                      - id: layer-ghi789
+                        name: render
+                        type: RENDER
+                        state: RUNNING
+                        minCores: 100
+                        maxCores: 2000
+                        threadable: false
+                        totalFrames: 100
+                        doneFrames: 45
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/host:
+    get:
+      operationId: listHosts
+      summary: Academy Software Foundation List Hosts
+      description: List all render host machines registered in the farm.
+      tags:
+        - Hosts
+      parameters:
+        - name: state
+          in: query
+          required: false
+          description: Filter hosts by state (UP, DOWN, REPAIR)
+          schema:
+            type: string
+            enum:
+              - UP
+              - DOWN
+              - REPAIR
+          example: UP
+      responses:
+        '200':
+          description: List of render hosts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HostList'
+              examples:
+                listHosts200Example:
+                  summary: Default listHosts 200 response
+                  x-microcks-default: true
+                  value:
+                    hosts:
+                      - id: host-jkl012
+                        name: render-host-001.studio.local
+                        state: UP
+                        lock: OPEN
+                        totalCores: 64
+                        idleCores: 32
+                        totalMemory: 131072
+                        idleMemory: 65536
+                        load: 35
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Show:
+      type: object
+      description: A show (production) in OpenCue
+      properties:
+        id:
+          type: string
+          description: Unique show identifier
+          example: show-abc123
+        name:
+          type: string
+          description: Show name
+          example: feature_film_2026
+        active:
+          type: boolean
+          description: Whether the show is currently active
+          example: true
+        defaultMinCores:
+          type: integer
+          description: Default minimum cores for jobs in this show
+          example: 100
+        defaultMaxCores:
+          type: integer
+          description: Default maximum cores for jobs in this show
+          example: 5000
+    ShowList:
+      type: object
+      description: List of shows
+      properties:
+        shows:
+          type: array
+          items:
+            $ref: '#/components/schemas/Show'
+    Job:
+      type: object
+      description: A render job in OpenCue
+      properties:
+        id:
+          type: string
+          description: Unique job identifier
+          example: job-def456
+        name:
+          type: string
+          description: Full job name
+          example: feature_film_2026-shot_001-render_v001
+        show:
+          type: string
+          description: Show name this job belongs to
+          example: feature_film_2026
+        state:
+          type: string
+          description: Current job state
+          example: RUNNING
+          enum:
+            - PENDING
+            - RUNNING
+            - FINISHED
+            - PAUSED
+        priority:
+          type: integer
+          description: Job priority (higher is more important)
+          example: 100
+        totalFrames:
+          type: integer
+          description: Total number of frames in the job
+          example: 100
+        doneFrames:
+          type: integer
+          description: Number of completed frames
+          example: 45
+        runningFrames:
+          type: integer
+          description: Number of currently running frames
+          example: 8
+        deadFrames:
+          type: integer
+          description: Number of failed/dead frames
+          example: 0
+        waitingFrames:
+          type: integer
+          description: Number of frames waiting to be dispatched
+          example: 47
+    JobList:
+      type: object
+      description: List of jobs
+      properties:
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
+    Layer:
+      type: object
+      description: A layer within a render job
+      properties:
+        id:
+          type: string
+          description: Unique layer identifier
+          example: layer-ghi789
+        name:
+          type: string
+          description: Layer name
+          example: render
+        type:
+          type: string
+          description: Layer type
+          example: RENDER
+          enum:
+            - RENDER
+            - UTIL
+        state:
+          type: string
+          description: Layer state
+          example: RUNNING
+        minCores:
+          type: integer
+          description: Minimum cores required per frame
+          example: 100
+        maxCores:
+          type: integer
+          description: Maximum cores allowed per frame
+          example: 2000
+        threadable:
+          type: boolean
+          description: Whether frames can run multi-threaded
+          example: false
+        totalFrames:
+          type: integer
+          description: Total number of frames in this layer
+          example: 100
+        doneFrames:
+          type: integer
+          description: Number of completed frames in this layer
+          example: 45
+    LayerList:
+      type: object
+      description: List of layers
+      properties:
+        layers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Layer'
+    Host:
+      type: object
+      description: A render host machine
+      properties:
+        id:
+          type: string
+          description: Unique host identifier
+          example: host-jkl012
+        name:
+          type: string
+          description: Hostname
+          example: render-host-001.studio.local
+        state:
+          type: string
+          description: Host state
+          example: UP
+          enum:
+            - UP
+            - DOWN
+            - REPAIR
+        lock:
+          type: string
+          description: Host lock state
+          example: OPEN
+          enum:
+            - OPEN
+            - LOCKED
+            - NIMBY_LOCKED
+        totalCores:
+          type: integer
+          description: Total CPU cores on the host
+          example: 64
+        idleCores:
+          type: integer
+          description: Currently idle CPU cores
+          example: 32
+        totalMemory:
+          type: integer
+          description: Total memory in MB
+          example: 131072
+        idleMemory:
+          type: integer
+          description: Currently idle memory in MB
+          example: 65536
+        load:
+          type: integer
+          description: Current system load (percentage)
+          example: 35
+    HostList:
+      type: object
+      description: List of hosts
+      properties:
+        hosts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Host'
+    SuccessResponse:
+      type: object
+      description: Generic success response
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: Operation completed successfully
+    ErrorResponse:
+      type: object
+      description: Error response
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: Job not found
+        code:
+          type: integer
+          description: Error code
+          example: 404
