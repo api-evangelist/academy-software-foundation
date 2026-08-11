@@ -273,6 +273,19 @@ apis:
   - type: Examples
     url: examples/opencue-job-example.json
 common:
+  - type: IssueTracker
+    url: https://github.com/AcademySoftwareFoundation/openexr/issues
+  - type: Releases
+    url: https://github.com/AcademySoftwareFoundation/openexr/releases
+  - type: SecurityPolicy
+    url: https://github.com/AcademySoftwareFoundation/openexr/blob/main/SECURITY.md
+  - type: CodeOfConduct
+    url: https://github.com/AcademySoftwareFoundation/openexr/blob/main/CODE_OF_CONDUCT.md
+  - type: ContributionGuide
+    url: https://github.com/AcademySoftwareFoundation/openexr/blob/main/CONTRIBUTING.md
+  - type: License
+    name: BSD-3-Clause
+    url: https://github.com/AcademySoftwareFoundation/openexr/blob/main/LICENSE
   - type: AgenticAccess
     url: agentic-access/academy-software-foundation-agentic-access.yml
   - type: DomainSecurity
@@ -338,8 +351,6 @@ common:
 
   - url: rules/academy-software-foundation-spectral-rules.yml
     type: SpectralRules
-  - url: capabilities/render-farm-management.yaml
-    type: X-NaftikoCapability
   - url: vocabulary/academy-software-foundation-vocabulary.yaml
     type: Vocabulary
 maintainers:
