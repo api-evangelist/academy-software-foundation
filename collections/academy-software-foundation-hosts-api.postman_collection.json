@@ -1,0 +1,157 @@
+{
+  "item": [
+    {
+      "id": "25050933-b031-4c88-964c-8aa60f2ff5d1",
+      "name": "Hosts",
+      "description": {
+        "content": "Manage render host machines in the farm",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d082f190-df56-4488-8b67-3ebeb17baa2f",
+          "name": "Academy Software Foundation List Hosts",
+          "request": {
+            "name": "Academy Software Foundation List Hosts",
+            "description": {
+              "content": "List all render host machines registered in the farm.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "host"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "Filter hosts by state (UP, DOWN, REPAIR)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fa394716-bb8a-408c-99ab-ab699f69d916",
+              "name": "List of render hosts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "host"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "UP"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hosts\": [\n    {\n      \"id\": \"host-jkl012\",\n      \"name\": \"render-host-001.studio.local\",\n      \"state\": \"UP\",\n      \"lock\": \"OPEN\",\n      \"totalCores\": 64,\n      \"idleCores\": 32,\n      \"totalMemory\": 131072,\n      \"idleMemory\": 65536,\n      \"load\": 35\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76ddfc8c-67e6-4f7c-9907-48f16b93df42",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "host"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "UP"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Job not found\",\n  \"code\": 404\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8d16dafc-7b30-47d0-ae36-89c452cb3b45",
+    "name": "Academy Software Foundation - OpenCue Hosts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenCue is an open source render management system developed by Sony Pictures Imageworks and hosted by the Academy Software Foundation. This specification documents the gRPC/REST API surface for managing render jobs, layers, frames, hosts, shows, and subscriptions in an OpenCue render farm deployment.",
+      "type": "text/plain"
+    }
+  }
+}

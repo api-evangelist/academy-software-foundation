@@ -1,0 +1,140 @@
+{
+  "item": [
+    {
+      "id": "ad4f5812-afb5-4a55-9530-2dcd7b9dafc1",
+      "name": "Shows",
+      "description": {
+        "content": "Manage shows (productions) in OpenCue",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "06aa406e-c126-41ab-b9e5-0c2a7e3e77f5",
+          "name": "Academy Software Foundation List Shows",
+          "request": {
+            "name": "Academy Software Foundation List Shows",
+            "description": {
+              "content": "List all active shows (productions) registered in OpenCue.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "show"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5c046f4f-a905-46f6-8b03-a7c940300a25",
+              "name": "List of shows",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "show"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"shows\": [\n    {\n      \"id\": \"show-abc123\",\n      \"name\": \"feature_film_2026\",\n      \"active\": true,\n      \"defaultMinCores\": 100,\n      \"defaultMaxCores\": 5000\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9c9fd08-55eb-43fd-a617-b8343cdf98ef",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "show"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Job not found\",\n  \"code\": 404\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9f4c3138-31a0-405b-98be-2561f816d534",
+    "name": "Academy Software Foundation - OpenCue Hosts Shows API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenCue is an open source render management system developed by Sony Pictures Imageworks and hosted by the Academy Software Foundation. This specification documents the gRPC/REST API surface for managing render jobs, layers, frames, hosts, shows, and subscriptions in an OpenCue render farm deployment.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Academy Software Foundation - OpenCue Hosts Jobs API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Academy Software Foundation List Jobs for Show",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/show/:show_id/job",
+            "params": [
+              {
+                "name": "show_id",
+                "value": "show-abc123",
+                "type": "path",
+                "description": "The show identifier"
+              },
+              {
+                "name": "state",
+                "value": "RUNNING",
+                "type": "query",
+                "description": "Filter jobs by state (PENDING, RUNNING, FINISHED, PAUSED)"
+              }
+            ]
+          },
+          "docs": "List all pending, running, and recently finished jobs for a show."
+        },
+        {
+          "info": {
+            "name": "Academy Software Foundation Get Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/job/:job_id",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "job-def456",
+                "type": "path",
+                "description": "The job identifier"
+              }
+            ]
+          },
+          "docs": "Get details for a specific render job."
+        },
+        {
+          "info": {
+            "name": "Academy Software Foundation Kill Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8080/api/job/:job_id",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "job-def456",
+                "type": "path",
+                "description": "The job identifier to kill"
+              }
+            ]
+          },
+          "docs": "Kill a running or paused render job."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Academy Software Foundation - OpenCue Hosts Shows API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shows",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Academy Software Foundation List Shows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/show"
+          },
+          "docs": "List all active shows (productions) registered in OpenCue."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

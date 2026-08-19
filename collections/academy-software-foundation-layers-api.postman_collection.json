@@ -1,0 +1,170 @@
+{
+  "item": [
+    {
+      "id": "ec523a87-d1e5-4152-8a84-deb5adf042ee",
+      "name": "Layers",
+      "description": {
+        "content": "Manage layers within a render job",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "717f139c-3220-4759-afac-a223ea42b59c",
+          "name": "Academy Software Foundation List Layers",
+          "request": {
+            "name": "Academy Software Foundation List Layers",
+            "description": {
+              "content": "List all layers within a render job.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "job",
+                ":job_id",
+                "layer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "job_id",
+                  "description": "(Required) The job identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a247cd51-c211-4da1-9d8d-8e330c0abce0",
+              "name": "List of layers for the job",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "job",
+                    ":job_id",
+                    "layer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "job_id",
+                      "description": "(Required) The job identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"layers\": [\n    {\n      \"id\": \"layer-ghi789\",\n      \"name\": \"render\",\n      \"type\": \"RENDER\",\n      \"state\": \"RUNNING\",\n      \"minCores\": 100,\n      \"maxCores\": 2000,\n      \"threadable\": false,\n      \"totalFrames\": 100,\n      \"doneFrames\": 45\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb564666-16c8-451b-858a-1bf0285a096a",
+              "name": "Job not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "job",
+                    ":job_id",
+                    "layer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "job_id",
+                      "description": "(Required) The job identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Job not found\",\n  \"code\": 404\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "261a2715-b0e7-4b92-a5c3-f02544743a49",
+    "name": "Academy Software Foundation - OpenCue Hosts Layers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenCue is an open source render management system developed by Sony Pictures Imageworks and hosted by the Academy Software Foundation. This specification documents the gRPC/REST API surface for managing render jobs, layers, frames, hosts, shows, and subscriptions in an OpenCue render farm deployment.",
+      "type": "text/plain"
+    }
+  }
+}
