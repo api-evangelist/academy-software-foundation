@@ -37,7 +37,7 @@ created: '2026-03-16'
 modified: '2026-04-19'
 url: >-
   https://raw.githubusercontent.com/api-evangelist/academy-software-foundation/refs/heads/main/apis.yml
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: academy-software-foundation:openexr
   name: OpenEXR
