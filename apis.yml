@@ -28,6 +28,16 @@ tags:
   - Color Management
   - Film
   - Linux Foundation
+  - Open-Source
+  - Rendering
+  - Standards
+  - Visual Effects
+  - VFX
+tags_raw:
+  - Animation
+  - Color Management
+  - Film
+  - Linux Foundation
   - Open Source
   - Rendering
   - Standards
@@ -97,6 +107,11 @@ apis:
     enabling better interoperability between editing tools.
   humanURL: https://opentimeline.io/
   tags:
+  - Editorial
+  - Timelines
+  - Standards
+  - Python
+  tags_raw:
   - Editorial
   - Timeline
   - Standards
@@ -226,6 +241,8 @@ apis:
   description: Manage render jobs submitted to the render farm
   humanURL: https://openexr.com/
   tags:
+  - Job
+  tags_raw:
   - Jobs
   properties:
   - type: OpenAPI
