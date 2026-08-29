@@ -1,0 +1,54 @@
+generated: '2026-08-29'
+method: searched
+source: https://github.com/AcademySoftwareFoundation/OpenCue/blob/master/docs/_docs/reference/rest-api-reference.md
+docs: https://www.opencue.io/docs/
+format: grpc-status-json
+rfc9457: false
+envelope:
+  shape: '{"code": <int>, "message": "<string>", "details": []}'
+  content_type: application/json
+  example: '{"code":5,"message":"Not Found","details":[]}'
+  note: >-
+    The OpenCue REST Gateway is a grpc-gateway translation layer, so the error body is the gRPC
+    status rendered as JSON rather than an RFC 9457 problem+json document. `code` is the numeric
+    google.rpc.Code, not the HTTP status.
+problem_types:
+  - status: 401
+    title: Unauthorized
+    detail: Missing or invalid Authorization header.
+    remediation: >-
+      Send Authorization: Bearer <jwt> on every request. Only /swagger/ and its three asset files
+      are exempt, and only when the documentation routes are enabled.
+    source: rest-api-reference.md#authentication
+  - status: 403
+    title: Forbidden
+    detail: JWT validation failed, or the token has expired.
+    remediation: >-
+      Re-mint the token. Claims sub and exp are required and the signature must be HS256 over the
+      gateway's shared secret. The reference recommends 1-2 hour expirations.
+    source: rest-api-reference.md#authentication
+  - status: 404
+    grpc_code: 5
+    grpc_status: NOT_FOUND
+    title: Not Found
+    detail: >-
+      Either the resource does not exist, or the interface is one the gateway does not route.
+      Six interfaces appear in the published OpenAPI definitions but are not registered on the
+      gateway — CueInterface, MonitoringInterface, RenderPartitionInterface, RqdReportInterface,
+      RqdInterface and RunningFrame — and calling them returns this body even with a valid token.
+    body: '{"code":5,"message":"Not Found","details":[]}'
+    remediation: >-
+      Distinguish the two cases before retrying. If the path names one of the six unrouted
+      interfaces, no token or payload will make it succeed; use the routed equivalent instead.
+    source: rest-api-reference.md#definitions-the-gateway-does-not-route
+  - status: 500
+    title: Internal Server Error
+    detail: Gateway or Cuebot failure.
+    remediation: Retry with backoff; check Cuebot connectivity from the gateway.
+    source: rest-api-reference.md#error-responses
+coverage:
+  note: >-
+    This catalog is taken from the provider's own reference, not derived from the four OpenAPI
+    documents in openapi/ — those were authored by API Evangelist from documentation and their
+    response sets are not the gateway's. The gateway's authoritative error surface is the gRPC
+    status space of the 18 .proto files in grpc/.

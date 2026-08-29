@@ -1,0 +1,69 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Academy Software Foundation - OpenCue Hosts API
+  version: 1.0.0
+extends: academy-software-foundation-hosts-api-openapi.yml
+x-generated: '2026-08-29'
+x-method: generated
+x-source: https://github.com/AcademySoftwareFoundation/OpenCue/blob/master/docs/_docs/reference/rest-api-reference.md
+x-note: "This overlay records what API Evangelist knows about the OpenCue REST Gateway that the underlying\
+  \ document does not say. The underlying document was AUTHORED BY API EVANGELIST from documentation (see\
+  \ openapi/_ae-authored/README.md) and its paths are resource-shaped (/api/host, /api/show/{show_id}/job);\
+  \ the real gateway uses grpc-gateway UNBOUND METHOD ROUTING, where every path is POST /<package>.<Service>/<Method>.\
+  \ The overlay does NOT rewrite those paths \u2014 an overlay never mutates the original, and rewriting\
+  \ them would produce a second authored contract rather than a harvested one. It annotates the document\
+  \ with the provider-published facts so a reader is not misled: the real default port, the JWT scheme,\
+  \ the error envelope, the rate-limit headers, and where the authoritative contract actually lives (grpc/,\
+  \ 18 .proto files, 304 RPCs)."
+actions:
+- target: $.info
+  description: Record the authoritative contract and the authorship of this document.
+  update:
+    x-authoritative-contract: "grpc/ \u2014 18 OpenCue .proto files, 28 services, 304 RPCs"
+    x-contract-source: https://github.com/AcademySoftwareFoundation/OpenCue/tree/master/proto/src
+    x-authored-by: "API Evangelist, from documentation \u2014 not published by ASWF"
+    x-live-description: A running gateway serves 18 OpenAPI 2.0 documents at /swagger/specs/<proto>.swagger.json
+    x-routing-style: 'grpc-gateway unbound method routing: POST /<package>.<Service>/<Method>'
+- target: $.servers
+  description: Record the port the provider documents. The existing servers[] entries (localhost:8080,
+    opencue-gateway:8080) are left in place; the provider reference states the gateway base is http://your-gateway:8448
+    and that it is configurable, because OpenCue is deployed by the studio, not by ASWF.
+  update:
+    x-documented-base: http://your-gateway:8448
+    x-documented-base-source: https://github.com/AcademySoftwareFoundation/OpenCue/blob/master/docs/_docs/reference/rest-api-reference.md
+    x-self-hosted: true
+- target: $.components
+  description: Add the JWT bearer scheme the gateway actually enforces on every route.
+  update:
+    securitySchemes:
+      bearerAuth:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+        description: 'HS256 JWT with required claims sub and exp. Sent as Authorization: Bearer <token>.
+          Issued by the studio operating the gateway, not by ASWF. 401 when the header is missing or malformed,
+          403 when validation fails or the token has expired. The only unauthenticated routes are /swagger/
+          and its three asset files.'
+- target: $
+  description: Record the runtime semantics captured in conventions/, errors/ and rate-limits/.
+  update:
+    x-error-envelope: "{\"code\": <int>, \"message\": \"<string>\", \"details\": []} \u2014 gRPC status\
+      \ as JSON, not RFC 9457"
+    x-rate-limit:
+      default_rps: 100
+      scope: per-client
+      configurable_via: RATE_LIMIT_RPS
+      headers:
+      - X-RateLimit-Limit
+      - X-RateLimit-Remaining
+      - X-RateLimit-Reset
+    x-idempotency: "none published \u2014 no idempotency key, no dry-run mode"
+    x-pagination: "none \u2014 collections are returned whole and narrowed with search-criteria request\
+      \ fields"
+    x-unrouted-interfaces:
+    - CueInterface
+    - MonitoringInterface
+    - RenderPartitionInterface
+    - RqdReportInterface
+    - RqdInterface
+    - RunningFrame

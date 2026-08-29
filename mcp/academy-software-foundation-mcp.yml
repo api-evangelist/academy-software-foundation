@@ -1,0 +1,112 @@
+generated: '2026-08-29'
+method: derived
+status: candidate
+source: >-
+  grpc/ — 18 OpenCue .proto files harvested 2026-08-29; routing status from
+  https://github.com/AcademySoftwareFoundation/OpenCue/blob/master/docs/_docs/reference/rest-api-reference.md
+note: >-
+  NO MCP SERVER EXISTS. Neither ASWF nor any of its hosted projects publishes one: the OpenCue
+  repository tree contains no path matching /mcp/, the foundation's llms.txt names none, and no
+  ASWF-operated host answers an MCP endpoint (there is no ASWF-operated host). The tool list below
+  is a CANDIDATE derived from the real gRPC contract so the shape of a future server is on record;
+  nothing here is callable today.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: derived
+  rationale: >-
+    Even if a server existed, it could not be remote in the usual sense. OpenCue is software studios
+    run inside their own network — there is no multi-tenant OpenCue to point an agent at — so the
+    natural deployment for an OpenCue MCP server is local-stdio or a studio-hosted endpoint, wrapping
+    that studio's own Cuebot. Any agent surface here belongs to the deploying studio, not to ASWF.
+backing_contract:
+  type: grpc
+  files: grpc/
+  services: 28
+  rpcs: 304
+  routed_via_rest: 273
+  transport_note: >-
+    A server would most likely wrap the REST Gateway (POST /<package>.<Service>/<Method>, JWT
+    bearer) rather than gRPC directly, because the gateway is the surface with published rate-limit
+    headers and self-description.
+candidate_tools:
+  - name: list_shows
+    rpc: ShowInterface.GetShows
+    route: POST /show.ShowInterface/GetShows
+    consequence: read
+  - name: get_show
+    rpc: ShowInterface.FindShow
+    route: POST /show.ShowInterface/FindShow
+    consequence: read
+  - name: list_jobs
+    rpc: JobInterface.GetJobs
+    route: POST /job.JobInterface/GetJobs
+    consequence: read
+  - name: get_job
+    rpc: JobInterface.GetJob
+    route: POST /job.JobInterface/GetJob
+    consequence: read
+  - name: list_layers
+    rpc: LayerInterface.GetLayer
+    route: POST /job.LayerInterface/GetLayer
+    consequence: read
+  - name: list_frames
+    rpc: JobInterface.GetFrames
+    route: POST /job.JobInterface/GetFrames
+    consequence: read
+  - name: list_hosts
+    rpc: HostInterface.GetHosts
+    route: POST /host.HostInterface/GetHosts
+    consequence: read
+  - name: pause_job
+    rpc: JobInterface.Pause
+    route: POST /job.JobInterface/Pause
+    consequence: write
+    reversal: JobInterface.Resume
+  - name: resume_job
+    rpc: JobInterface.Resume
+    route: POST /job.JobInterface/Resume
+    consequence: write
+    reversal: JobInterface.Pause
+  - name: retry_frames
+    rpc: JobInterface.RetryFrames
+    route: POST /job.JobInterface/RetryFrames
+    consequence: write
+    reversal: JobInterface.KillFrames
+  - name: kill_frames
+    rpc: JobInterface.KillFrames
+    route: POST /job.JobInterface/KillFrames
+    consequence: destructive
+    reversal: JobInterface.RetryFrames
+  - name: eat_frames
+    rpc: JobInterface.EatFrames
+    route: POST /job.JobInterface/EatFrames
+    consequence: destructive
+    reversal: JobInterface.RetryFrames
+  - name: kill_job
+    rpc: JobInterface.Kill
+    route: POST /job.JobInterface/Kill
+    consequence: destructive
+    reversal: none — a killed job must be resubmitted
+  - name: lock_host
+    rpc: HostInterface.Lock
+    route: POST /host.HostInterface/Lock
+    consequence: write
+    reversal: HostInterface.Unlock
+  - name: unlock_host
+    rpc: HostInterface.Unlock
+    route: POST /host.HostInterface/Unlock
+    consequence: write
+    reversal: HostInterface.Lock
+excluded_from_candidates:
+  reason: not routed by the REST Gateway — returns 404 with {"code":5,"message":"Not Found"}
+  interfaces:
+    - CueInterface
+    - MonitoringInterface
+    - RenderPartitionInterface
+    - RqdReportInterface
+    - RqdInterface
+    - RunningFrame

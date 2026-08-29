@@ -3,12 +3,67 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
 provider: Academy Software Foundation
 providerId: academy-software-foundation
+generated: '2026-08-29'
+method: searched
+source: https://www.aswf.io/join/
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
+modified: '2026-08-29'
+reconciled: true
+description: >-
+  ASWF sells no API access and meters nothing. Every hosted project — OpenEXR, OpenVDB,
+  OpenColorIO, OpenTimelineIO, Open Shading Language, MaterialX, OpenCue, OpenImageIO, OpenFX,
+  OpenAPV, OpenPBR, rez, OpenRV — is free open source under Apache 2.0, BSD-3-Clause or MIT, and
+  OpenCue's gRPC and REST surfaces run on hardware the consuming studio owns. There is therefore no
+  API plan to record. What ASWF DOES publish, with real numbers, is corporate membership pricing;
+  that is captured separately below so it is not mistaken for API pricing.
+plan_count: 0
+plans: []
+pricing_model: none
+metering: none
+free_tier: n/a
+membership_tiers:
+  note: >-
+    Foundation membership fees, NOT API plans. Membership buys governance participation and
+    marketing presence; it buys no additional API capability, rate limit or support tier, and
+    non-members have identical access to every project. Recorded verbatim from the published page
+    for accuracy, and deliberately kept out of plans[] so it cannot be scored as API pricing.
+  source: https://www.aswf.io/join/
+  currency: USD
+  billing_period: annual
+  requirement: >-
+    Corporate membership in ASWF requires corporate membership in The Linux Foundation (Silver
+    tier pricing is listed separately on the same page).
+  tiers:
+    - name: Premier Member
+      price: 50000
+    - name: General — 5,000 and above employees
+      price: 20000
+    - name: General — 2,000-4,999 employees
+      price: 15000
+    - name: General — 500-1,999 employees
+      price: 10000
+    - name: General — less than 499 employees
+      price: 5000
+    - name: Associate (pre-approved non-profits, open source projects and government entities)
+      price: 0
+  linux_foundation_silver:
+    - name: 5,000 and above employees
+      price: 20000
+    - name: 500-4,999 employees
+      price: 15000
+    - name: 100-499 employees
+      price: 10000
+    - name: Less than 99 employees
+      price: 5000
+    - name: Associate
+      price: 0
+licenses:
+  - Apache-2.0
+  - BSD-3-Clause
+  - MIT
+sources:
+  - https://www.aswf.io/join/
+  - https://www.aswf.io/projects/
 tags:
   - Animation
   - Color Management
@@ -19,20 +74,6 @@ tags:
   - Standards
   - Visual Effects
   - VFX
-description: The Academy Software Foundation is a Linux Foundation project that hosts production-proven
-  open source projects (OpenEXR, OpenVDB, OpenColorIO, OpenTimelineIO, OpenShadingLanguage, MaterialX,
-  OpenCue, OpenImageIO, OpenFX, OpenAPV, OpenPBR). The hosted projects are free open source software
-  released under permissive licenses (Apache 2.0, BSD-3-Clause, MIT). There is no commercial API surface
-  with metered pricing. Engagement is through Linux Foundation membership (Premier / General / Associate)
-  rather than per-API plans.
-sources:
-  - https://www.aswf.io/
-  - https://www.aswf.io/membership/
-notes: No public commercial API pricing. ASWF projects are open source and free to use. Organizations
-  participate via Linux Foundation membership tiers; membership fees are negotiated and not published as
-  per-API plans. Reconciled flag set to false because there is no consumer pricing page to map to API
-  Commons Plans entries.
-plans: []
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com

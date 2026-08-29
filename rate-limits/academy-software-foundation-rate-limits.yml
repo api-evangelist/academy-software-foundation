@@ -3,38 +3,56 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
 provider: Academy Software Foundation
 providerId: academy-software-foundation
+generated: '2026-08-29'
+method: searched
+source: https://github.com/AcademySoftwareFoundation/OpenCue/blob/master/docs/_docs/reference/rest-api-reference.md
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
-tags:
-  - Animation
-  - Color Management
-  - Film
-  - Linux Foundation
-  - Open Source
-  - Rendering
-  - Standards
-  - Visual Effects
-  - VFX
-  - Rate Limiting
-description: ASWF projects are open source C++/Python libraries (OpenEXR, OpenVDB, OpenColorIO, OpenTimelineIO,
-  Open Shading Language, MaterialX, OpenCue, OpenImageIO, OpenFX, OpenAPV, OpenPBR) consumed in-process
-  rather than over an HTTP API. There are no published rate limits because there is no hosted API surface;
-  consumption is bounded only by local compute and license terms (Apache 2.0 / BSD-3-Clause / MIT).
-sources:
-  - https://www.aswf.io/projects/
-  - https://github.com/AcademySoftwareFoundation
-notes: No HTTP API surface, no rate limits to capture. The only network-facing resources are GitHub repositories
-  and project websites, which inherit GitHub / hosting platform rate limits rather than ASWF-published limits.
-responseCodes: {}
-limits: []
+modified: '2026-08-29'
+reconciled: true
+description: >-
+  ASWF operates no metered public API, so there are no foundation-published quotas. The OpenCue REST
+  Gateway — the one HTTP surface any ASWF project ships — does publish a rate limit, and it publishes
+  the response headers with it. The limit is enforced by the studio's own gateway deployment and is
+  configurable, so the number below is the shipped default rather than a ceiling ASWF imposes.
+limit_count: 1
+limits:
+  - api: academy-software-foundation:academy-software-foundation-jobs-api
+    name: OpenCue REST Gateway default request rate
+    scope: per-client
+    limit: 100
+    unit: requests
+    window: 1s
+    burst: null
+    configurable: true
+    configuration: RATE_LIMIT_RPS environment variable on the gateway
+    source: https://github.com/AcademySoftwareFoundation/OpenCue/blob/master/docs/_docs/reference/rest-api-reference.md
+responseHeaders:
+  - name: X-RateLimit-Limit
+    description: The ceiling for the current window (e.g. 100).
+  - name: X-RateLimit-Remaining
+    description: Requests left in the current window (e.g. 95).
+  - name: X-RateLimit-Reset
+    description: Unix timestamp at which the window resets (e.g. 1694001000).
+retry_after: false
+exhaustion_status: null
+exhaustion_note: >-
+  The published reference documents the limit and the three response headers but does not state the
+  status code returned on exhaustion, and no ASWF-operated host exists to observe one. Recorded as
+  unknown rather than guessed.
+responseCodes:
+  '401': Missing or invalid Authorization header
+  '403': Token validation failed or expired
+  '404': Not Found — resource missing, or an interface the gateway does not route
+  '500': Internal server error
 policies:
-  - name: License Boundary
-    description: Use is governed by per-project open source licenses (Apache 2.0 for most projects, BSD-3-Clause
-      for OpenEXR/OpenColorIO, MIT for some tooling). There are no per-call quotas.
+  - name: License boundary
+    description: >-
+      ASWF libraries (OpenEXR, OpenVDB, OpenColorIO, OpenTimelineIO, OSL, MaterialX, OpenImageIO)
+      are consumed in-process under Apache 2.0 / BSD-3-Clause. There are no per-call quotas because
+      there are no calls over a network.
+sources:
+  - https://github.com/AcademySoftwareFoundation/OpenCue/blob/master/docs/_docs/reference/rest-api-reference.md
+  - https://www.aswf.io/projects/
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com

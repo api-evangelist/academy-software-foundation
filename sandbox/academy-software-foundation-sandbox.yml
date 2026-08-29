@@ -1,0 +1,47 @@
+generated: '2026-08-29'
+method: searched
+source: https://github.com/AcademySoftwareFoundation/OpenCue/blob/master/sandbox/README.md
+docs: https://www.opencue.io/docs/quick-starts/
+note: >-
+  There is no hosted ASWF sandbox and no test-mode credential, because ASWF operates no service. The
+  equivalent is a SELF-DEPLOYED sandbox: OpenCue ships a docker-compose environment that stands up
+  the whole system — PostgreSQL, Flyway migrations, Cuebot and an RQD render agent — on a developer
+  machine, and that is what a client is expected to test against. Recorded as the provider's real
+  testing surface rather than left empty.
+type: self-hosted
+hosted_sandbox: false
+test_credentials: false
+test_credentials_note: >-
+  No test API keys, test cards or magic identifiers are published — none apply. The gateway's JWT is
+  signed with a shared secret the operator sets, so a test token is one the tester mints locally.
+environments:
+  - name: OpenCue sandbox (docker-compose)
+    url: https://github.com/AcademySoftwareFoundation/OpenCue/tree/master/sandbox
+    quickstart: https://www.opencue.io/docs/quick-starts/
+    components:
+      - PostgreSQL database
+      - Flyway database migration tool
+      - Cuebot server (the gRPC server behind every interface in grpc/)
+      - RQD rendering server
+    prerequisites:
+      - Docker installed and running
+      - 'mkdir -p /tmp/rqd/logs /tmp/rqd/shots'
+    build: docker build -t opencue/cuebot -f cuebot/Dockerfile .
+    note: >-
+      Also runnable with each component in a Python virtual environment instead of a container. The
+      sandbox additionally provisions Grafana dashboards and a Loki/Prometheus stack under
+      sandbox/config/ for observing the deployment.
+  - name: REST Gateway sandbox
+    url: https://github.com/AcademySoftwareFoundation/OpenCue/tree/master/rest_gateway
+    quickstart: https://www.opencue.io/docs/quick-starts/quick-start-rest-gateway/
+    note: >-
+      Adds the HTTP surface in front of the sandbox Cuebot. Once running, GET /swagger/ serves the
+      interactive UI unauthenticated and /swagger/specs/<proto>.swagger.json serves the 18 OpenAPI
+      2.0 definitions — the only way to obtain those documents, since they are generated at Docker
+      build time and are not committed to the repository.
+    default_port: 8448
+    test_scripts:
+      - rest_gateway/test_gateway.sh
+      - rest_gateway/test_docker_gateway.sh
+      - rest_gateway/test_rest_gateway_docker_compose.sh
+      - rest_gateway/test_live_cuebot.sh

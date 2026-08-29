@@ -1,0 +1,192 @@
+generated: '2026-08-29'
+method: derived
+source: grpc/ — 18 OpenCue .proto files harvested 2026-08-29 from github.com/AcademySoftwareFoundation/OpenCue
+note: >-
+  Derived from the protobuf messages and service definitions, which are the authoritative OpenCue
+  data model. It is NOT derived from the four OpenAPI documents in openapi/: those were authored by
+  API Evangelist from documentation and describe resource-shaped paths the gateway does not serve.
+identifier_convention:
+  style: uuid-string
+  note: Entity ids are opaque string fields named `id` on each protobuf message.
+entities:
+  - name: Show
+    proto: show.proto
+    interface: ShowInterface
+    description: A production. The root of the OpenCue ownership tree; everything else belongs to a show.
+    relationships:
+      - has_many: Job
+        via: show_id
+      - has_many: Subscription
+        via: show
+      - has_many: Filter
+        via: show
+      - has_many: Group
+        via: show
+      - has_many: ServiceOverride
+        via: show
+      - has_many: Owner
+        via: show
+  - name: Group
+    proto: job.proto
+    interface: GroupInterface
+    description: A hierarchical bucket of jobs inside a show, carrying inherited resource limits.
+    relationships:
+      - belongs_to: Show
+      - has_many: Group
+        via: parent group (sub-groups)
+      - has_many: Job
+  - name: Job
+    proto: job.proto
+    interface: JobInterface
+    description: A submitted render job. The largest interface in the contract — 42 RPCs.
+    relationships:
+      - belongs_to: Show
+      - belongs_to: Group
+      - has_many: Layer
+      - has_many: Frame
+      - has_many: Comment
+      - has_many: Depend
+  - name: Layer
+    proto: job.proto
+    interface: LayerInterface
+    description: A stage within a job (render, comp, publish), carrying its own resource requirements.
+    relationships:
+      - belongs_to: Job
+      - has_many: Frame
+      - has_many: Limit
+        via: DropLimit / AddLimit
+  - name: Frame
+    proto: job.proto
+    interface: FrameInterface
+    description: A single unit of work dispatched to a host.
+    relationships:
+      - belongs_to: Layer
+      - belongs_to: Job
+      - has_one: Proc
+        via: the proc currently running it
+  - name: Depend
+    proto: depend.proto
+    interface: DependInterface
+    description: >-
+      A dependency edge between jobs, layers or frames. Created by CreateDependencyOnJob /
+      CreateDependencyOnLayer / CreateDependencyOnFrame and removed by DropDepends.
+    relationships:
+      - belongs_to: Job
+      - belongs_to: Layer
+      - belongs_to: Frame
+  - name: Host
+    proto: host.proto
+    interface: HostInterface
+    description: A render machine registered in the farm.
+    relationships:
+      - belongs_to: Allocation
+      - has_many: Proc
+      - has_one: Deed
+      - belongs_to: Facility
+        via: allocation
+  - name: Proc
+    proto: host.proto
+    interface: ProcInterface
+    description: A booked slice of a host's cores currently running a frame.
+    relationships:
+      - belongs_to: Host
+      - has_one: Frame
+  - name: Deed
+    proto: host.proto
+    interface: DeedInterface
+    description: An ownership record binding a host to an Owner.
+    relationships:
+      - belongs_to: Host
+      - belongs_to: Owner
+  - name: Owner
+    proto: host.proto
+    interface: OwnerInterface
+    relationships:
+      - belongs_to: Show
+      - has_many: Deed
+  - name: Allocation
+    proto: facility.proto
+    interface: AllocationInterface
+    description: A named pool of hosts inside a facility.
+    relationships:
+      - belongs_to: Facility
+      - has_many: Host
+      - has_many: Subscription
+  - name: Facility
+    proto: facility.proto
+    interface: FacilityInterface
+    description: A physical site.
+    relationships:
+      - has_many: Allocation
+  - name: Subscription
+    proto: subscription.proto
+    interface: SubscriptionInterface
+    description: A show's entitlement to cores from an allocation.
+    relationships:
+      - belongs_to: Show
+      - belongs_to: Allocation
+  - name: Filter
+    proto: filter.proto
+    interface: FilterInterface
+    description: A rule set applied to incoming jobs for a show.
+    relationships:
+      - belongs_to: Show
+      - has_many: Matcher
+      - has_many: Action
+  - name: Matcher
+    proto: filter.proto
+    interface: MatcherInterface
+    relationships:
+      - belongs_to: Filter
+  - name: Action
+    proto: filter.proto
+    interface: ActionInterface
+    relationships:
+      - belongs_to: Filter
+  - name: Service
+    proto: service.proto
+    interface: ServiceInterface
+    description: A named execution profile (cores, memory, tags) a layer requests.
+    relationships:
+      - has_many: ServiceOverride
+  - name: ServiceOverride
+    proto: service.proto
+    interface: ServiceOverrideInterface
+    relationships:
+      - belongs_to: Show
+      - belongs_to: Service
+  - name: Limit
+    proto: limit.proto
+    interface: LimitInterface
+    description: A named concurrency ceiling layers can be bound to (licences, plugin seats).
+    relationships:
+      - has_many: Layer
+  - name: Department
+    proto: department.proto
+    interface: DepartmentInterface
+    relationships:
+      - belongs_to: Show
+      - has_many: Task
+  - name: Task
+    proto: task.proto
+    interface: TaskInterface
+    relationships:
+      - belongs_to: Department
+  - name: Comment
+    proto: comment.proto
+    interface: CommentInterface
+    description: Free-form annotation attached to a job or a host.
+    relationships:
+      - belongs_to: Job
+      - belongs_to: Host
+  - name: RenderPartition
+    proto: renderPartition.proto
+    interface: RenderPartitionInterface
+    description: A local reservation of host resources. Present in the contract; NOT routed by the REST Gateway.
+    relationships:
+      - belongs_to: Host
+counts:
+  proto_files: 18
+  services: 28
+  rpcs: 304
+  routed_rpcs: 273

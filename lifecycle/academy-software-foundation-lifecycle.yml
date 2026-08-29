@@ -1,0 +1,98 @@
+generated: '2026-08-29'
+method: searched
+source: https://github.com/AcademySoftwareFoundation/tac/blob/main/process/lifecycle.md
+versioning:
+  scheme: semver-per-project
+  wire_versioning: none
+  note: >-
+    ASWF versions projects, not endpoints. Each hosted project releases independently under semantic
+    versioning and tags releases on GitHub. Neither the OpenCue gRPC contract nor its REST Gateway
+    carries a version segment or version header, so a client's "API version" is whichever OpenCue
+    release the studio deployed.
+  current_versions:
+    - project: OpenEXR
+      version: v3.4.15
+      released: '2026-08-21'
+    - project: OpenVDB
+      version: v13.0.0
+      released: '2025-11-04'
+    - project: OpenColorIO
+      version: v2.5.2
+      released: '2026-05-13'
+    - project: OpenTimelineIO
+      version: v0.18.1
+      released: '2025-11-09'
+      note: Tagged as a pre-release ("Beta 18.1"); OTIO has not reached 1.0.
+    - project: MaterialX
+      version: v1.39.5
+      released: '2026-05-22'
+    - project: OpenImageIO
+      version: v3.1.16.0
+      released: '2026-08-01'
+    - project: Open Shading Language
+      version: v1.15.6.0
+      released: '2026-08-02'
+    - project: OpenCue
+      version: v1.19.1
+      released: '2026-04-08'
+project_lifecycle:
+  published: true
+  source: https://github.com/AcademySoftwareFoundation/tac/blob/main/process/lifecycle.md
+  governance: >-
+    Adopted or amended by majority vote of both the Technical Advisory Council (TAC) and the
+    Governing Board.
+  stages:
+    - name: Sandbox
+      description: >-
+        Entry point for early-stage projects. Requires an approved Technical Charter, trademark
+        transfer to LF Projects LLC, a clean license scan, a completed contribution proposal, a
+        presentation to the TAC and an affirmative TAC vote.
+      expectation: >-
+        Expected to reach Incubation within one year; the TAC may vote a project out of Sandbox if
+        it does not report progress.
+    - name: Incubation
+      description: Projects that have met the TAC's requirements to move beyond Sandbox.
+    - name: Graduated
+      description: Production-grade projects with established governance and contributor base.
+    - name: Archived
+      description: >-
+        The published end-of-life state for an ASWF project. This is the foundation's deprecation
+        path — a project is archived by the TAC rather than an individual endpoint being sunset.
+  review_cycle: https://github.com/AcademySoftwareFoundation/tac/blob/main/process/review_cycle.md
+deprecation:
+  policy_published: true
+  policy_url: https://github.com/AcademySoftwareFoundation/tac/blob/main/process/lifecycle.md
+  scope: project-level
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  note: >-
+    ASWF publishes a project retirement path (the Archived stage above) and per-project release
+    notes carry deprecation announcements, but no RFC 8594 Sunset/Deprecation header is emitted by
+    any ASWF surface — there is no ASWF-operated origin to emit one.
+  routed_surface_gap:
+    description: >-
+      The closest thing OpenCue has to a per-operation deprecation signal is the gap between the
+      published and the routed surface: 31 of the 304 endpoints its OpenAPI definitions describe are
+      not registered on the gateway and return 404 / gRPC NOT_FOUND. The provider documents this
+      explicitly rather than removing the definitions.
+    source: https://github.com/AcademySoftwareFoundation/OpenCue/blob/master/docs/_docs/reference/rest-api-reference.md
+status_page:
+  published: false
+  probed:
+    - url: https://status.aswf.io
+      status: '000'
+      note: DNS does not resolve.
+  note: >-
+    ASWF operates no runtime service, so there is no uptime to report. Studios monitor their own
+    OpenCue deployment; the OpenCue sandbox ships Grafana/Prometheus dashboards for that purpose
+    (sandbox/config/grafana/dashboards/opencue-monitoring.json in the OpenCue repository).
+sla:
+  published: false
+  note: >-
+    No availability SLA. The one published time commitment ASWF makes is on security response:
+    48-hour acknowledgement and a 14-day target for critical patches (see
+    security/academy-software-foundation-vulnerability-disclosure.yml).
+support:
+  slack: https://join.slack.com/t/academysoftwarefdn/shared_invite/zt-3vrwgz5ti-5wTvNH~zn90WCNRDe7163g
+  issues: https://github.com/AcademySoftwareFoundation

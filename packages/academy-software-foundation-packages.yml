@@ -1,0 +1,188 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  PyPI JSON metadata endpoints (pypi.org/pypi/<pkg>/json) queried 2026-08-29, cross-checked against
+  github.com/AcademySoftwareFoundation repositories for first-party ownership
+note: >-
+  ASWF ships libraries, not a hosted API, so its "SDK" surface is the set of language bindings and
+  client packages each project publishes. Every entry below is published from an ASWF-hosted
+  repository. npm, crates.io and RubyGems were probed and hold NO first-party ASWF package: the npm
+  `opentimelineio` package is a third-party TypeScript port (github.com/fifteen42/otio.js), npm
+  `materialx` is an unrelated project, npm `openexr` is a security-holding placeholder, and the
+  crates.io `openexr` crate is third-party Rust bindings. `Imath` on PyPI is likewise a different
+  project (innovata) and is NOT the ASWF Imath library. Those are recorded here as explicit
+  negatives so a later round does not re-adopt them as first-party.
+packages:
+  - language: python
+    registry: pypi
+    name: OpenTimelineIO
+    url: https://pypi.org/project/OpenTimelineIO/
+    install: pip install OpenTimelineIO
+    official: true
+    project: OpenTimelineIO
+    repository: https://github.com/AcademySoftwareFoundation/OpenTimelineIO
+    version: 0.18.1
+    published: '2025-11-09'
+  - language: python
+    registry: pypi
+    name: opentimelineio-plugins
+    url: https://pypi.org/project/opentimelineio-plugins/
+    install: pip install opentimelineio-plugins
+    official: true
+    project: OpenTimelineIO
+    repository: https://github.com/AcademySoftwareFoundation/OpenTimelineIO
+    version: 0.18.1
+    published: '2025-11-09'
+    note: OpenTimelineIO with the bundled adapter plug-ins.
+  - language: python
+    registry: pypi
+    name: MaterialX
+    url: https://pypi.org/project/MaterialX/
+    install: pip install MaterialX
+    official: true
+    project: MaterialX
+    repository: https://github.com/AcademySoftwareFoundation/MaterialX
+    version: 1.39.5
+    published: '2026-05-22'
+  - language: python
+    registry: pypi
+    name: OpenImageIO
+    url: https://pypi.org/project/OpenImageIO/
+    install: pip install OpenImageIO
+    official: true
+    project: OpenImageIO
+    repository: https://github.com/AcademySoftwareFoundation/OpenImageIO
+    version: 3.1.16.0
+    published: '2026-08-01'
+  - language: python
+    registry: pypi
+    name: OpenEXR
+    url: https://pypi.org/project/OpenEXR/
+    install: pip install OpenEXR
+    official: true
+    project: OpenEXR
+    repository: https://github.com/AcademySoftwareFoundation/openexr
+    version: 3.4.15
+    published: '2026-08-21'
+    note: Python bindings for the OpenEXR image file format.
+  - language: python
+    registry: pypi
+    name: opencue-pycue
+    url: https://pypi.org/project/opencue-pycue/
+    install: pip install opencue-pycue
+    official: true
+    project: OpenCue
+    repository: https://github.com/AcademySoftwareFoundation/OpenCue
+    version: 1.19.1
+    published: '2026-04-07'
+    note: >-
+      PyCue is the Python API client for OpenCue. This is the closest thing ASWF publishes to a
+      conventional API SDK — it speaks gRPC to Cuebot using the same .proto contracts saved in grpc/.
+  - language: python
+    registry: pypi
+    name: opencue-proto
+    url: https://pypi.org/project/opencue-proto/
+    install: pip install opencue-proto
+    official: true
+    project: OpenCue
+    repository: https://github.com/AcademySoftwareFoundation/OpenCue
+    version: 1.19.1
+    published: '2026-04-07'
+    note: Compiled protobuf/gRPC stubs generated from the 18 .proto files in grpc/.
+  - language: python
+    registry: pypi
+    name: opencue-pyoutline
+    url: https://pypi.org/project/opencue-pyoutline/
+    install: pip install opencue-pyoutline
+    official: true
+    project: OpenCue
+    repository: https://github.com/AcademySoftwareFoundation/OpenCue
+    version: 1.19.1
+    published: '2026-04-07'
+  - language: python
+    registry: pypi
+    name: opencue-cueadmin
+    url: https://pypi.org/project/opencue-cueadmin/
+    install: pip install opencue-cueadmin
+    official: true
+    project: OpenCue
+    repository: https://github.com/AcademySoftwareFoundation/OpenCue
+    version: 1.19.1
+    published: '2026-04-07'
+    note: Command-line administration tool; see cli/academy-software-foundation-cli.yml.
+  - language: python
+    registry: pypi
+    name: opencue-cuegui
+    url: https://pypi.org/project/opencue-cuegui/
+    install: pip install opencue-cuegui
+    official: true
+    project: OpenCue
+    repository: https://github.com/AcademySoftwareFoundation/OpenCue
+    version: 1.19.1
+    published: '2026-04-07'
+  - language: python
+    registry: pypi
+    name: opencue-cuesubmit
+    url: https://pypi.org/project/opencue-cuesubmit/
+    install: pip install opencue-cuesubmit
+    official: true
+    project: OpenCue
+    repository: https://github.com/AcademySoftwareFoundation/OpenCue
+    version: 1.19.1
+    published: '2026-04-07'
+  - language: python
+    registry: pypi
+    name: opencue-rqd
+    url: https://pypi.org/project/opencue-rqd/
+    install: pip install opencue-rqd
+    official: true
+    project: OpenCue
+    repository: https://github.com/AcademySoftwareFoundation/OpenCue
+    version: 1.19.1
+    published: '2026-04-07'
+  - language: python
+    registry: pypi
+    name: rez
+    url: https://pypi.org/project/rez/
+    install: pip install rez
+    official: true
+    project: rez
+    repository: https://github.com/AcademySoftwareFoundation/rez
+    version: 3.4.0
+    published: '2026-05-31'
+  - language: python
+    registry: pypi
+    name: rez-pip
+    url: https://pypi.org/project/rez-pip/
+    install: pip install rez-pip
+    official: true
+    project: rez
+    repository: https://github.com/AcademySoftwareFoundation/rez
+    version: 0.4.2
+    published: '2025-12-20'
+not_first_party:
+  - registry: npm
+    name: opentimelineio
+    version: 0.1.0
+    published: '2025-10-19'
+    reason: Third-party TypeScript port at github.com/fifteen42/otio.js, not published by ASWF.
+  - registry: npm
+    name: materialx
+    version: 1.2.0
+    published: '2018-01-20'
+    reason: Unrelated project (cockroach-ui); name collision only.
+  - registry: npm
+    name: openexr
+    version: 0.0.1-security
+    published: '2021-03-13'
+    reason: npm security-holding placeholder, no code.
+  - registry: pypi
+    name: Imath
+    version: 0.0.2
+    published: '2021-09-17'
+    reason: >-
+      Different project (github.com/innovata/imath). The ASWF Imath library ships inside the OpenEXR
+      Python wheel, not as a standalone PyPI package.
+  - registry: crates.io
+    name: openexr
+    reason: Third-party Rust bindings, not an ASWF release.

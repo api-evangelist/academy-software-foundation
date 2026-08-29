@@ -1,0 +1,44 @@
+# ASWF
+
+## Posts
+- [American Society of Cinematographers (ASC) Contributes StEM3-VP Project to the Academy Software Foundation (ASWF) Digital Production Example Library (DPEL)](https://www.aswf.io/news/stem3-vp/): New StEM3-VP digital assets help cinematographers stress-test and evaluate LED volumes for virtual production SUMMARY ASC's StEM3-VP,  the third generation
+- [Academy Software Foundation Welcomes CIQ, Evercast, and Rochester Institute of Technology as New Members](https://www.aswf.io/news/academy-software-foundation-welcomes-ciq-evercast-and-rochester-institute-of-technology-as-new-members/): The ASWF welcomes CIQ, Evercast and Rochester Institute of Technology as new members.
+- [DreamWorks and Canonical Develop Snap Installer for MoonRay](https://www.aswf.io/blog/dreamworks-and-canonical-develop-snap-installer-for-moonray/): Curves, Copyright 2026 DreamWorks Animation. All rights reserved. Rendered with MoonRay. Fresh on the heels of MoonRay joining the Academy
+- [Academy Software Foundation Launches New Wayland for Artists Working Group](https://www.aswf.io/blog/academy-software-foundation-launches-new-wayland-for-artists-working-group/): screen shot of a “Wayland VFX Desktop” running Blender and OpenRV The Academy Software Foundation, in conjunction with the Visual
+- [ASWF Open Source Days 2026 Schedule is Live!](https://www.aswf.io/blog/aswf-open-source-days-2026-schedule-is-live/): Bill Ballew, CTO of DreamWorks Animation, to Keynote Every summer, we host Open Source Days to bring together technical leaders,
+
+## Pages
+- [Home](https://www.aswf.io/): The mission of the Academy Software Foundation (ASWF) is to increase the quality and quantity of contributions to the content
+- [Summer Learning Program (SLP)](https://www.aswf.io/summer-learning-program/): Preparing individuals from underrepresented communities for technical careers in the film, media and entertainment industry. Organized by the ASWF Diversity
+- [Protected: 2019 Annual Report](https://www.aswf.io/2019-annual-report/): /* 2019 ANNUAL REPORT /* WHO WE ARE The Academy Software Foundation is collaborative effort to advance open source software
+- [Staff](https://www.aswf.io/about/staff/)
+- [Governing Board](https://www.aswf.io/about/governing-board/): The ASWF Governing Board (GB) is responsible for marketing and other business oversight and budget decisions for the Foundation. The
+
+## Venues
+- [Join Remotely](https://www.aswf.io/venue/join-remotely-2/)
+- [Join Remotely](https://www.aswf.io/venue/join-remotely-3/)
+- [Rancho Mirage, CA](https://www.aswf.io/venue/rancho-mirage-ca-2/)
+- [Rancho Mirage, CA](https://www.aswf.io/venue/rancho-mirage-ca-3/)
+- [Vancouver](https://www.aswf.io/venue/vancouver-2/)
+
+## Categories
+- [Blog](https://www.aswf.io/category/blog/)
+- [Announcements](https://www.aswf.io/category/news/)
+- [ASWF Projects](https://www.aswf.io/category/blog/projects/)
+- [In The News](https://www.aswf.io/category/in-the-news/)
+- [Behind the Screens](https://www.aswf.io/category/bts/)
+
+## Tags
+- [Behind the Screens](https://www.aswf.io/tag/behind-the-screens/)
+- [OpenColorIO](https://www.aswf.io/tag/opencolorio/)
+- [OpenEXR](https://www.aswf.io/tag/openexr/)
+- [Open Source Days](https://www.aswf.io/tag/open-source-days/)
+- [New Members](https://www.aswf.io/tag/new-member/)
+
+## Event Categories
+- [Industry Conference](https://www.aswf.io/events/category/industry-conference/)
+- [ASWF Hosted Event](https://www.aswf.io/events/category/aswf-hosted-event/)
+- [Meetup](https://www.aswf.io/events/category/meetup/)
+
+## Optional
+- [Sitemap index](https://www.aswf.io/wp-sitemap.xml)

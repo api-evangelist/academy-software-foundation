@@ -1,0 +1,22 @@
+{
+    "linkset": [
+        {
+            "anchor": "https://www.aswf.io/wp-json/",
+            "service-desc": [
+                {
+                    "href": "https://www.aswf.io/wp-json/"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "https://developer.wordpress.org/rest-api/"
+                }
+            ],
+            "status": [
+                {
+                    "href": "https://www.aswf.io"
+                }
+            ]
+        }
+    ]
+}

@@ -58,7 +58,7 @@ tags_raw:
   - Visual Effects
   - VFX
 created: '2026-03-16'
-modified: '2026-04-19'
+modified: '2026-08-29'
 url: >-
   https://raw.githubusercontent.com/api-evangelist/academy-software-foundation/refs/heads/main/apis.yml
 specificationVersion: '0.23'
@@ -167,7 +167,7 @@ apis:
   - XML
   properties:
   - type: Documentation
-    url: https://materialx.org/docs/
+    url: https://www.materialx.org/Specification.html
   - type: GitHubRepository
     url: https://github.com/AcademySoftwareFoundation/MaterialX
 - aid: academy-software-foundation:openimagedio
@@ -236,12 +236,17 @@ apis:
 - aid: academy-software-foundation:academy-software-foundation-hosts-api
   name: Academy Software Foundation Hosts API
   description: Manage render host machines in the farm
-  humanURL: https://openexr.com/
+  humanURL: https://www.opencue.io/
+  baseURL: 'http://{opencue-gateway-host}:8448'
   tags:
   - Hosts
   properties:
   - type: OpenAPI
     url: openapi/academy-software-foundation-hosts-api-openapi.yml
+  - type: Overlay
+    url: overlays/academy-software-foundation-hosts-api-overlay.yaml
+  - type: Protobuf
+    url: grpc/academy-software-foundation-grpc.yml
   - type: Documentation
     url: https://www.opencue.io/docs/
   - type: GitHubRepository
@@ -253,7 +258,8 @@ apis:
 - aid: academy-software-foundation:academy-software-foundation-jobs-api
   name: Academy Software Foundation Jobs API
   description: Manage render jobs submitted to the render farm
-  humanURL: https://openexr.com/
+  humanURL: https://www.opencue.io/
+  baseURL: 'http://{opencue-gateway-host}:8448'
   tags:
   - Job
   tags_raw:
@@ -261,6 +267,10 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/academy-software-foundation-jobs-api-openapi.yml
+  - type: Overlay
+    url: overlays/academy-software-foundation-jobs-api-overlay.yaml
+  - type: Protobuf
+    url: grpc/academy-software-foundation-grpc.yml
   - type: Documentation
     url: https://www.opencue.io/docs/
   - type: GitHubRepository
@@ -272,12 +282,17 @@ apis:
 - aid: academy-software-foundation:academy-software-foundation-layers-api
   name: Academy Software Foundation Layers API
   description: Manage layers within a render job
-  humanURL: https://openexr.com/
+  humanURL: https://www.opencue.io/
+  baseURL: 'http://{opencue-gateway-host}:8448'
   tags:
   - Layers
   properties:
   - type: OpenAPI
     url: openapi/academy-software-foundation-layers-api-openapi.yml
+  - type: Overlay
+    url: overlays/academy-software-foundation-layers-api-overlay.yaml
+  - type: Protobuf
+    url: grpc/academy-software-foundation-grpc.yml
   - type: Documentation
     url: https://www.opencue.io/docs/
   - type: GitHubRepository
@@ -289,12 +304,17 @@ apis:
 - aid: academy-software-foundation:academy-software-foundation-shows-api
   name: Academy Software Foundation Shows API
   description: Manage shows (productions) in OpenCue
-  humanURL: https://openexr.com/
+  humanURL: https://www.opencue.io/
+  baseURL: 'http://{opencue-gateway-host}:8448'
   tags:
   - Shows
   properties:
   - type: OpenAPI
     url: openapi/academy-software-foundation-shows-api-openapi.yml
+  - type: Overlay
+    url: overlays/academy-software-foundation-shows-api-overlay.yaml
+  - type: Protobuf
+    url: grpc/academy-software-foundation-grpc.yml
   - type: Documentation
     url: https://www.opencue.io/docs/
   - type: GitHubRepository
@@ -316,7 +336,7 @@ common:
     url: https://github.com/AcademySoftwareFoundation/openexr/blob/main/CONTRIBUTING.md
   - type: License
     name: BSD-3-Clause
-    url: https://github.com/AcademySoftwareFoundation/openexr/blob/main/LICENSE
+    url: https://github.com/AcademySoftwareFoundation/openexr/blob/main/LICENSE.md
   - type: AgenticAccess
     url: agentic-access/academy-software-foundation-agentic-access.yml
   - type: DomainSecurity
@@ -334,9 +354,9 @@ common:
   - type: GettingStarted
     url: https://www.aswf.io/get-involved/
   - type: TermsOfService
-    url: https://www.aswf.io/terms/
+    url: https://www.linuxfoundation.org/terms
   - type: PrivacyPolicy
-    url: https://www.aswf.io/privacy/
+    url: https://www.linuxfoundation.org/privacy
   - type: Features
     data:
     - name: Open Source Governance
@@ -384,6 +404,61 @@ common:
     type: SpectralRules
   - url: vocabulary/academy-software-foundation-vocabulary.yaml
     type: Vocabulary
+  - type: Packages
+    url: packages/academy-software-foundation-packages.yml
+  - type: SDKs
+    url: packages/academy-software-foundation-packages.yml
+  - type: CLI
+    url: cli/academy-software-foundation-cli.yml
+  - type: WellKnown
+    url: well-known/academy-software-foundation-well-known.yml
+  - type: APICatalog
+    url: well-known/academy-software-foundation-api-catalog.json
+  - type: LLMsTxt
+    url: llms/academy-software-foundation-llms.txt
+  - type: Protobuf
+    url: grpc/academy-software-foundation-grpc.yml
+  - type: Conformance
+    url: conformance/academy-software-foundation-conformance.yml
+  - type: ErrorCatalog
+    url: errors/academy-software-foundation-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/academy-software-foundation-lifecycle.yml
+  - type: Deprecation
+    url: lifecycle/academy-software-foundation-lifecycle.yml
+  - type: Authentication
+    url: authentication/academy-software-foundation-authentication.yml
+  - type: Conventions
+    url: conventions/academy-software-foundation-conventions.yml
+  - type: ChangeLog
+    url: changelog/academy-software-foundation-changelog.yml
+  - type: Sandbox
+    url: sandbox/academy-software-foundation-sandbox.yml
+  - type: DataModel
+    url: data-model/academy-software-foundation-data-model.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: RateLimits
+    url: rate-limits/academy-software-foundation-rate-limits.yml
+  - type: Plans
+    url: plans/academy-software-foundation-plans-pricing.yml
+  - type: VulnerabilityDisclosure
+    url: security/academy-software-foundation-vulnerability-disclosure.yml
+  - type: Security
+    url: security/academy-software-foundation-vulnerability-disclosure.yml
+  - type: APIReference
+    url: https://www.opencue.io/docs/reference/rest-api-reference/
+  - type: Support
+    url: https://www.aswf.io/get-involved/
+  - type: SignUp
+    url: https://www.aswf.io/join/
+  - type: Pricing
+    url: https://www.aswf.io/join/
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
+x-enrichment:
+  date: '2026-08-29'
+  status: enriched
+  artifacts_added: 42
+  pass: local-v1

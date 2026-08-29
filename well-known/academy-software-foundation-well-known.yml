@@ -1,0 +1,104 @@
+generated: '2026-08-29'
+method: probed
+source: live HTTP probes of every apis.yml Website/Documentation host and every OpenAPI servers[] host
+note: >-
+  ASWF publishes no API host of its own — the OpenCue REST Gateway is software studios deploy on
+  their own network (http://your-gateway:8448), so there is no ASWF-operated origin to carry a
+  .well-known surface. The probe therefore ran against the foundation and project websites. One real
+  document was found: www.aswf.io serves an RFC 9727 /.well-known/api-catalog (content-type
+  application/linkset+json) pointing at the WordPress REST API that runs the foundation site.
+  openfx.io is a Framer-hosted single-page site that answers HTTP 200 with the same 950KB HTML
+  document for EVERY path under /.well-known/ — a catch-all, not a served document; it is recorded
+  as a miss and contributes no pointer.
+hit_count: 1
+hosts:
+  - host: https://www.aswf.io
+    documents:
+      - path: /.well-known/api-catalog
+        status: 200
+        content_type: application/linkset+json
+        file: academy-software-foundation-api-catalog.json
+        note: 301 to /.well-known/api-catalog/ then 200; RFC 9727 linkset naming service-desc https://www.aswf.io/wp-json/
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://openexr.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://www.openvdb.org
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://opencolorio.org
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://opentimeline.io
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://www.materialx.org
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://www.opencue.io
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://openfx.io
+    catch_all: true
+    documents: []
+    soft_404_control:
+      path: /.well-known/aswf-probe-control-does-not-exist
+      status: 200
+      bytes: 950781
+      note: >-
+        Framer SPA catch-all. Every /.well-known/* path returns HTTP 200 with the identical
+        950,781-byte HTML document, including paths that cannot exist. No document was saved and
+        no pointer is emitted for this host.

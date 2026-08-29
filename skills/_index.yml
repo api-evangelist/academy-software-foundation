@@ -1,0 +1,25 @@
+generated: '2026-08-29'
+method: generated
+source: >-
+  grpc/ (18 OpenCue .proto files harvested verbatim) plus the OpenCue REST API reference. Every
+  operation named in these skills was grepped out of the harvested protos or read from the
+  provider's own reference; none was invented.
+provider: Academy Software Foundation
+note: >-
+  ASWF publishes no skills, no AGENTS.md and no llms-full.txt. These are packaged operating
+  instructions written by API Evangelist against the real OpenCue contract. They are deliberately
+  grounded in gRPC method routes rather than in the four OpenAPI documents in openapi/, which were
+  authored from documentation and describe paths the gateway does not serve.
+skills:
+  - name: triage-a-stuck-render-job
+    file: academy-software-foundation-triage-a-stuck-render-job.md
+    api: academy-software-foundation:academy-software-foundation-jobs-api
+    summary: Diagnose a job that is not finishing and take the smallest reversible corrective action.
+  - name: manage-farm-capacity
+    file: academy-software-foundation-manage-farm-capacity.md
+    api: academy-software-foundation:academy-software-foundation-hosts-api
+    summary: Inspect and adjust hosts, procs, allocations and subscriptions without irreversible deletes.
+  - name: discover-the-gateway-surface
+    file: academy-software-foundation-discover-the-gateway-surface.md
+    api: academy-software-foundation:academy-software-foundation-jobs-api
+    summary: Ask a running gateway what it routes, and subtract the 31 endpoints it describes but does not serve.

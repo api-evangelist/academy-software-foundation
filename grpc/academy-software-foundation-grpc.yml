@@ -1,0 +1,181 @@
+generated: '2026-08-29'
+method: searched
+source: https://github.com/AcademySoftwareFoundation/OpenCue/tree/master/proto/src
+note: The authoritative OpenCue contract, saved verbatim. Each file was fetched from raw.githubusercontent.com/AcademySoftwareFoundation/OpenCue/master/proto/src/<name>.proto
+  on 2026-08-29 (HTTP 200) and is unmodified apart from the filename prefix. These are the same sources
+  the gateway generates its 18 OpenAPI 2.0 documents from at Docker build time; those generated documents
+  are NOT committed to the OpenCue repository and can only be fetched from a running gateway, which is
+  why the protos are what this repo holds.
+project: OpenCue
+transport: gRPC (Cuebot server); HTTP/JSON via grpc-gateway
+totals:
+  files: 18
+  services: 28
+  rpcs: 304
+  routed_via_rest: 273
+http_projection:
+  style: grpc-gateway unbound method routing
+  path_form: POST /<package>.<Service>/<Method>
+  example: POST /show.ShowInterface/GetShows
+  unrouted_interfaces:
+  - CueInterface
+  - MonitoringInterface
+  - RenderPartitionInterface
+  - RqdReportInterface
+  - RqdInterface
+  - RunningFrame
+files:
+- file: academy-software-foundation-opencue-comment.proto
+  proto: comment.proto
+  package: comment
+  syntax: proto3
+  services:
+  - CommentInterface
+  rpc_count: 2
+  bytes: 1097
+- file: academy-software-foundation-opencue-criterion.proto
+  proto: criterion.proto
+  package: criterion
+  syntax: proto3
+  services: []
+  rpc_count: 0
+  bytes: 777
+- file: academy-software-foundation-opencue-cue.proto
+  proto: cue.proto
+  package: cue
+  syntax: proto3
+  services:
+  - CueInterface
+  rpc_count: 1
+  bytes: 1914
+- file: academy-software-foundation-opencue-department.proto
+  proto: department.proto
+  package: department
+  syntax: proto3
+  services:
+  - DepartmentInterface
+  rpc_count: 13
+  bytes: 5675
+- file: academy-software-foundation-opencue-depend.proto
+  proto: depend.proto
+  package: depend
+  syntax: proto3
+  services:
+  - DependInterface
+  rpc_count: 3
+  bytes: 2746
+- file: academy-software-foundation-opencue-facility.proto
+  proto: facility.proto
+  package: facility
+  syntax: proto3
+  services:
+  - FacilityInterface
+  - AllocationInterface
+  rpc_count: 19
+  bytes: 6062
+- file: academy-software-foundation-opencue-filter.proto
+  proto: filter.proto
+  package: filter
+  syntax: proto3
+  services:
+  - ActionInterface
+  - FilterInterface
+  - MatcherInterface
+  rpc_count: 22
+  bytes: 9205
+- file: academy-software-foundation-opencue-host.proto
+  proto: host.proto
+  package: host
+  syntax: proto3
+  services:
+  - DeedInterface
+  - HostInterface
+  - OwnerInterface
+  - ProcInterface
+  rpc_count: 45
+  bytes: 19611
+- file: academy-software-foundation-opencue-job.proto
+  proto: job.proto
+  package: job
+  syntax: proto3
+  services:
+  - FrameInterface
+  - GroupInterface
+  - JobInterface
+  - LayerInterface
+  rpc_count: 116
+  bytes: 48378
+- file: academy-software-foundation-opencue-limit.proto
+  proto: limit.proto
+  package: limit
+  syntax: proto3
+  services:
+  - LimitInterface
+  rpc_count: 7
+  bytes: 2100
+- file: academy-software-foundation-opencue-monitoring.proto
+  proto: monitoring.proto
+  package: monitoring
+  syntax: proto3
+  services:
+  - MonitoringInterface
+  rpc_count: 6
+  bytes: 10358
+- file: academy-software-foundation-opencue-renderPartition.proto
+  proto: renderPartition.proto
+  package: renderPartition
+  syntax: proto3
+  services:
+  - RenderPartitionInterface
+  rpc_count: 2
+  bytes: 1721
+- file: academy-software-foundation-opencue-report.proto
+  proto: report.proto
+  package: report
+  syntax: proto3
+  services:
+  - RqdReportInterface
+  rpc_count: 3
+  bytes: 5200
+- file: academy-software-foundation-opencue-rqd.proto
+  proto: rqd.proto
+  package: rqd
+  syntax: proto3
+  services:
+  - RqdInterface
+  - RunningFrame
+  rpc_count: 19
+  bytes: 6872
+- file: academy-software-foundation-opencue-service.proto
+  proto: service.proto
+  package: service
+  syntax: proto3
+  services:
+  - ServiceInterface
+  - ServiceOverrideInterface
+  rpc_count: 7
+  bytes: 2817
+- file: academy-software-foundation-opencue-show.proto
+  proto: show.proto
+  package: show
+  syntax: proto3
+  services:
+  - ShowInterface
+  rpc_count: 31
+  bytes: 10600
+- file: academy-software-foundation-opencue-subscription.proto
+  proto: subscription.proto
+  package: subscription
+  syntax: proto3
+  services:
+  - SubscriptionInterface
+  rpc_count: 5
+  bytes: 2081
+- file: academy-software-foundation-opencue-task.proto
+  proto: task.proto
+  package: task
+  syntax: proto3
+  services:
+  - TaskInterface
+  rpc_count: 3
+  bytes: 1539

@@ -1,0 +1,54 @@
+generated: '2026-08-29'
+method: searched
+source: https://pypi.org/project/opencue-cueadmin/
+docs: https://www.opencue.io/docs/
+note: >-
+  ASWF ships no foundation-level CLI. Two hosted projects publish first-party command-line tools,
+  both on PyPI and both maintained in their own ASWF repository.
+clis:
+  - name: cueadmin
+    project: OpenCue
+    package: opencue-cueadmin
+    registry: pypi
+    version: 1.19.1
+    published: '2026-04-07'
+    install: pip install opencue-cueadmin
+    repository: https://github.com/AcademySoftwareFoundation/OpenCue/tree/master/cueadmin
+    url: https://pypi.org/project/opencue-cueadmin/
+    description: >-
+      Command-line administration tool for OpenCue. It talks gRPC to Cuebot through PyCue, so it
+      exercises the same contracts saved in grpc/ rather than the REST Gateway.
+    surface:
+      - group: shows
+        note: List and inspect shows, enable/disable booking and dispatching.
+      - group: jobs
+        note: List, pause, resume, kill, retry, eat and re-prioritise jobs and their frames.
+      - group: hosts
+        note: List hosts and procs, lock/unlock, set allocation and hardware state.
+      - group: allocations and subscriptions
+        note: Create and adjust allocations, facilities and show subscriptions.
+    caveat: >-
+      The command groups above are named from the OpenCue interfaces cueadmin drives (ShowInterface,
+      JobInterface, HostInterface, AllocationInterface, SubscriptionInterface); the exact flag set is
+      whatever `cueadmin -h` prints for the installed version and is not restated here.
+  - name: rez
+    project: rez
+    package: rez
+    registry: pypi
+    version: 3.4.0
+    published: '2026-05-31'
+    install: pip install rez
+    repository: https://github.com/AcademySoftwareFoundation/rez
+    url: https://pypi.org/project/rez/
+    description: >-
+      Cross-platform package configuration, build and deployment system used to resolve VFX software
+      environments. Ships a family of rez-* subcommands (rez-env, rez-build, rez-release, rez-pip).
+companion_tools:
+  - name: cuegui
+    package: opencue-cuegui
+    type: desktop-gui
+    note: Graphical OpenCue client — not a CLI, recorded here for completeness.
+  - name: cuesubmit
+    package: opencue-cuesubmit
+    type: desktop-gui
+    note: Artist-facing job submission UI.

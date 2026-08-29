@@ -1,0 +1,150 @@
+generated: '2026-08-29'
+method: searched
+source: https://github.com/AcademySoftwareFoundation/OpenCue/blob/master/docs/_docs/reference/rest-api-reference.md
+docs: https://www.opencue.io/docs/
+scope: >-
+  These conventions describe the OpenCue REST Gateway, the only HTTP interface any ASWF project
+  ships. The other ASWF projects are in-process C++/Python libraries with no wire protocol, so no
+  HTTP convention applies to them.
+transport:
+  styles:
+    - grpc
+    - rest
+  primary: grpc
+  note: >-
+    The contract of record is gRPC — 18 .proto files, 28 services, 304 RPCs, saved verbatim in grpc/.
+    The REST Gateway is a grpc-gateway translation of those protos using UNBOUND METHOD ROUTING, so
+    every HTTP path is derived mechanically from the protobuf service and method
+    (POST /show.ShowInterface/GetShows), and field names are camel-cased from the protobuf messages.
+    There are no resource-shaped REST paths.
+request:
+  method: POST
+  applies_to: every endpoint, read operations included
+  content_type: application/json
+  empty_body: '{}'
+  response_format: json
+authentication:
+  style: jwt-bearer
+  header: 'Authorization: Bearer <jwt>'
+  algorithm: HS256
+  detail: authentication/academy-software-foundation-authentication.yml
+idempotency:
+  supported: false
+  header: null
+  note: >-
+    No idempotency key, no request-deduplication window, and no dry-run/preview mode is documented
+    for any gateway endpoint. Because every call is a POST — including pure reads such as GetShows —
+    a client cannot rely on HTTP method semantics to tell a safe retry from an unsafe one either.
+    Recorded as an honest absence; it is NOT na, because the gateway has a large write surface.
+dry_run_mode:
+  supported: false
+  note: No preview, validate-only or dry-run flag is published for any endpoint.
+reversibility:
+  state: documented
+  grade_basis: >-
+    Reversal operations exist and are named in the contract, but no published window bounds any of
+    them, so this grades as documented rather than verified. Nothing in the OpenCue protos or
+    the REST reference states a time limit inside which a reversal is still possible.
+  operations:
+    - action: Pause a job
+      operation: JobInterface.Pause
+      reversal: JobInterface.Resume
+      route: POST /job.JobInterface/Resume
+      window: null
+      window_source: null
+    - action: Kill frames
+      operation: JobInterface.KillFrames / LayerInterface.KillFrames / FrameInterface.Kill
+      reversal: JobInterface.RetryFrames / LayerInterface.RetryFrames / FrameInterface.Retry
+      route: POST /job.JobInterface/RetryFrames
+      window: null
+      note: >-
+        Retry re-queues a killed or dead frame. It restores the frame to a runnable state; it does
+        not restore work already discarded.
+    - action: Eat frames (discard without running)
+      operation: JobInterface.EatFrames / LayerInterface.EatFrames / FrameInterface.Eat
+      reversal: JobInterface.RetryFrames / LayerInterface.RetryFrames
+      route: POST /job.JobInterface/RetryFrames
+      window: null
+    - action: Lock a host
+      operation: HostInterface.Lock
+      reversal: HostInterface.Unlock
+      route: POST /host.HostInterface/Unlock
+      window: null
+    - action: Redirect a proc to another job
+      operation: ProcInterface.RedirectToJob / ProcInterface.RedirectToGroup
+      reversal: ProcInterface.ClearRedirect
+      route: POST /host.ProcInterface/ClearRedirect
+      window: null
+    - action: Disable booking or dispatching for a show
+      operation: ShowInterface.EnableBooking(false) / ShowInterface.EnableDispatching(false)
+      reversal: the same operation with the flag set true
+      window: null
+    - action: Add a dependency
+      operation: '*.CreateDependencyOnJob / CreateDependencyOnLayer / CreateDependencyOnFrame'
+      reversal: '*.DropDepends'
+      route: POST /job.JobInterface/DropDepends
+      window: null
+  irreversible:
+    - operation: Delete
+      note: >-
+        Delete exists on 19 interfaces (Show, Job group, Host, Filter, Matcher, Action, Allocation,
+        Facility, Limit, Owner, Deed, Service, ServiceOverride, Subscription, Task, Department,
+        Comment, RenderPartition). No Undelete, Restore or trash/retention window is published for
+        any of them. An agent must treat every Delete as permanent.
+    - operation: JobInterface.Kill
+      note: Killing a job terminates running frames; the job itself cannot be un-killed, only relaunched.
+pagination:
+  style: none
+  note: >-
+    The gateway returns whole collections (GetShows, GetHosts, GetFrames). No limit/offset, cursor or
+    page parameter is documented, and the protos carry no page token field. Large result sets are
+    narrowed with the interface's own search/filter request messages (e.g. FrameSearchCriteria in
+    job.proto), not with pagination.
+filtering:
+  style: request-message-criteria
+  note: >-
+    Filtering is expressed as fields on the protobuf request message — FrameSearchCriteria,
+    JobSearchCriteria, HostSearchCriteria — camel-cased into the JSON body.
+field_expansion:
+  supported: false
+metadata:
+  supported: true
+  note: Free-form annotation is done through CommentInterface (Comment/Delete) rather than a metadata map.
+request_id_tracing:
+  supported: false
+  note: No request-id or correlation header is documented.
+versioning:
+  style: none-on-the-wire
+  note: >-
+    There is no version segment in any path and no version header. The gateway's surface is whatever
+    the .proto files it was built from describe; version is a property of the deployed OpenCue
+    release (1.19.1 at time of writing), not of the API. See lifecycle/.
+error_envelope:
+  format: grpc-status-json
+  shape: '{"code": <int>, "message": "<string>", "details": []}'
+  rfc9457: false
+  detail: errors/academy-software-foundation-problem-types.yml
+rate_limit_signaling:
+  headers:
+    - X-RateLimit-Limit
+    - X-RateLimit-Remaining
+    - X-RateLimit-Reset
+  detail: rate-limits/academy-software-foundation-rate-limits.yml
+self_description:
+  swagger_ui: GET /swagger/ (unauthenticated)
+  definitions: GET /swagger/specs/<proto>.swagger.json — 18 OpenAPI 2.0 documents, 304 endpoints
+  note: >-
+    The definitions are generated at Docker build time by protoc-gen-openapiv2 over the protos and
+    are NOT committed to the repository, so they cannot be harvested from GitHub — only from a
+    running gateway. The grpc/ protos in this repo are the same source those documents are made from.
+  caveat: >-
+    Generated with generate_unbound_methods=true, the definitions describe 304 endpoints while the
+    gateway routes only 273 across 22 interfaces. CueInterface, MonitoringInterface,
+    RenderPartitionInterface, RqdReportInterface, RqdInterface and RunningFrame appear in the
+    definitions but return 404 with a gRPC NOT_FOUND body when called.
+cross_links:
+  errors: errors/academy-software-foundation-problem-types.yml
+  lifecycle: lifecycle/academy-software-foundation-lifecycle.yml
+  authentication: authentication/academy-software-foundation-authentication.yml
+  rate_limits: rate-limits/academy-software-foundation-rate-limits.yml
+  contract: grpc/

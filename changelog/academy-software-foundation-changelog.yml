@@ -1,0 +1,81 @@
+generated: '2026-08-29'
+method: searched
+source: https://api.github.com/repos/AcademySoftwareFoundation/<project>/releases
+note: >-
+  ASWF publishes no single foundation-level changelog. Each hosted project maintains its own dated
+  GitHub Releases feed with release notes, and OpenCue additionally publishes a dated news feed in
+  its documentation site. The entries below are the most recent releases per project, read from the
+  GitHub Releases API on 2026-08-29.
+scheme: semver-per-project
+wire_version: none
+feeds:
+  - project: OpenEXR
+    url: https://github.com/AcademySoftwareFoundation/openexr/releases
+  - project: OpenVDB
+    url: https://github.com/AcademySoftwareFoundation/openvdb/releases
+  - project: OpenColorIO
+    url: https://github.com/AcademySoftwareFoundation/OpenColorIO/releases
+  - project: OpenTimelineIO
+    url: https://github.com/AcademySoftwareFoundation/OpenTimelineIO/releases
+  - project: MaterialX
+    url: https://github.com/AcademySoftwareFoundation/MaterialX/releases
+  - project: OpenImageIO
+    url: https://github.com/AcademySoftwareFoundation/OpenImageIO/releases
+  - project: Open Shading Language
+    url: https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/releases
+  - project: OpenCue
+    url: https://github.com/AcademySoftwareFoundation/OpenCue/releases
+  - project: OpenCue documentation news
+    url: https://www.opencue.io/news/
+entries:
+  - project: OpenEXR
+    version: v3.4.15
+    date: '2026-08-21'
+    breaking: false
+    highlights: Patch release; v3.3.14 and v3.2.12 shipped the same day on the maintenance branches.
+  - project: OpenImageIO
+    version: v3.1.16.0
+    date: '2026-08-01'
+    breaking: false
+    highlights: Current 3.1 line; v3.0.21.0 shipped the same day on the 3.0 maintenance branch.
+  - project: Open Shading Language
+    version: v1.15.6.0
+    date: '2026-08-02'
+    breaking: false
+  - project: MaterialX
+    version: v1.39.5
+    date: '2026-05-22'
+    breaking: false
+  - project: OpenColorIO
+    version: v2.5.2
+    date: '2026-05-13'
+    breaking: false
+  - project: OpenCue
+    version: v1.19.1
+    date: '2026-04-08'
+    breaking: false
+    highlights: >-
+      The release the current PyPI packages (opencue-pycue, opencue-proto, opencue-cueadmin,
+      opencue-cuegui, opencue-cuesubmit, opencue-rqd, opencue-pyoutline 1.19.1) were cut from.
+  - project: OpenVDB
+    version: v13.0.0
+    date: '2025-11-04'
+    breaking: true
+    highlights: Major version bump.
+  - project: OpenTimelineIO
+    version: v0.18.1
+    date: '2025-11-09'
+    breaking: false
+    prerelease: true
+    highlights: 'Beta 18.1 — Python wheel fixes. OTIO is still pre-1.0 and tags releases as pre-releases.'
+api_relevant:
+  - date: '2026-08-26'
+    project: OpenCue
+    title: Swagger UI for the REST Gateway
+    url: https://github.com/AcademySoftwareFoundation/OpenCue/blob/master/docs/news/2026-08-26-rest-gateway-swagger-ui.md
+    summary: >-
+      The gateway now serves an interactive Swagger UI at /swagger/ and 18 downloadable OpenAPI 2.0
+      definitions at /swagger/specs/<proto>.swagger.json, generated at build time by
+      protoc-gen-openapiv2 over the same .proto files saved in grpc/. 304 endpoints described,
+      273 routed. This is the single most agent-relevant change ASWF has shipped: before it, a
+      running gateway described nothing about itself.
