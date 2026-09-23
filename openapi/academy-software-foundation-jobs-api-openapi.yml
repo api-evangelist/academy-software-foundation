@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Academy Software Foundation - OpenCue Hosts Jobs API
+  title: Academy Software Foundation - OpenCue Jobs API
   description: OpenCue is an open source render management system developed by Sony Pictures Imageworks and hosted by the Academy Software Foundation. This specification documents the gRPC/REST API surface for managing render jobs, layers, frames, hosts, shows, and subscriptions in an OpenCue render farm deployment.
   version: 1.0.0
   contact:
@@ -163,6 +163,26 @@ components:
         message:
           type: string
           example: Operation completed successfully
+    JobList:
+      type: object
+      description: List of jobs
+      properties:
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
+    ErrorResponse:
+      type: object
+      description: Error response
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: Job not found
+        code:
+          type: integer
+          description: Error code
+          example: 404
     Job:
       type: object
       description: A render job in OpenCue
@@ -212,23 +232,3 @@ components:
           type: integer
           description: Number of frames waiting to be dispatched
           example: 47
-    ErrorResponse:
-      type: object
-      description: Error response
-      properties:
-        error:
-          type: string
-          description: Error message
-          example: Job not found
-        code:
-          type: integer
-          description: Error code
-          example: 404
-    JobList:
-      type: object
-      description: List of jobs
-      properties:
-        jobs:
-          type: array
-          items:
-            $ref: '#/components/schemas/Job'
