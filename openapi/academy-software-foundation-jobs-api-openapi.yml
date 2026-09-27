@@ -153,24 +153,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    SuccessResponse:
-      type: object
-      description: Generic success response
-      properties:
-        success:
-          type: boolean
-          example: true
-        message:
-          type: string
-          example: Operation completed successfully
-    JobList:
-      type: object
-      description: List of jobs
-      properties:
-        jobs:
-          type: array
-          items:
-            $ref: '#/components/schemas/Job'
     ErrorResponse:
       type: object
       description: Error response
@@ -232,3 +214,21 @@ components:
           type: integer
           description: Number of frames waiting to be dispatched
           example: 47
+    JobList:
+      type: object
+      description: List of jobs
+      properties:
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
+    SuccessResponse:
+      type: object
+      description: Generic success response
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: Operation completed successfully

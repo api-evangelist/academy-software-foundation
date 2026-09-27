@@ -52,6 +52,26 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      description: Error response
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: Job not found
+        code:
+          type: integer
+          description: Error code
+          example: 404
+    ShowList:
+      type: object
+      description: List of shows
+      properties:
+        shows:
+          type: array
+          items:
+            $ref: '#/components/schemas/Show'
     Show:
       type: object
       description: A show (production) in OpenCue
@@ -76,23 +96,3 @@ components:
           type: integer
           description: Default maximum cores for jobs in this show
           example: 5000
-    ShowList:
-      type: object
-      description: List of shows
-      properties:
-        shows:
-          type: array
-          items:
-            $ref: '#/components/schemas/Show'
-    ErrorResponse:
-      type: object
-      description: Error response
-      properties:
-        error:
-          type: string
-          description: Error message
-          example: Job not found
-        code:
-          type: integer
-          description: Error code
-          example: 404
