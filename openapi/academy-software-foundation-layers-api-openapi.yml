@@ -64,26 +64,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      description: Error response
-      properties:
-        error:
-          type: string
-          description: Error message
-          example: Job not found
-        code:
-          type: integer
-          description: Error code
-          example: 404
-    LayerList:
-      type: object
-      description: List of layers
-      properties:
-        layers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Layer'
     Layer:
       type: object
       description: A layer within a render job
@@ -127,3 +107,23 @@ components:
           type: integer
           description: Number of completed frames in this layer
           example: 45
+    ErrorResponse:
+      type: object
+      description: Error response
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: Job not found
+        code:
+          type: integer
+          description: Error code
+          example: 404
+    LayerList:
+      type: object
+      description: List of layers
+      properties:
+        layers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Layer'

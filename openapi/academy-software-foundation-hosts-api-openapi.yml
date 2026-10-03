@@ -68,18 +68,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      description: Error response
-      properties:
-        error:
-          type: string
-          description: Error message
-          example: Job not found
-        code:
-          type: integer
-          description: Error code
-          example: 404
     Host:
       type: object
       description: A render host machine
@@ -128,6 +116,18 @@ components:
           type: integer
           description: Current system load (percentage)
           example: 35
+    ErrorResponse:
+      type: object
+      description: Error response
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: Job not found
+        code:
+          type: integer
+          description: Error code
+          example: 404
     HostList:
       type: object
       description: List of hosts
