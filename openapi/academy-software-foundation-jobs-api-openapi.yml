@@ -161,18 +161,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Job'
-    ErrorResponse:
+    SuccessResponse:
       type: object
-      description: Error response
+      description: Generic success response
       properties:
-        error:
+        success:
+          type: boolean
+          example: true
+        message:
           type: string
-          description: Error message
-          example: Job not found
-        code:
-          type: integer
-          description: Error code
-          example: 404
+          example: Operation completed successfully
     Job:
       type: object
       description: A render job in OpenCue
@@ -222,13 +220,15 @@ components:
           type: integer
           description: Number of frames waiting to be dispatched
           example: 47
-    SuccessResponse:
+    ErrorResponse:
       type: object
-      description: Generic success response
+      description: Error response
       properties:
-        success:
-          type: boolean
-          example: true
-        message:
+        error:
           type: string
-          example: Operation completed successfully
+          description: Error message
+          example: Job not found
+        code:
+          type: integer
+          description: Error code
+          example: 404
