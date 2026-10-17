@@ -68,14 +68,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    HostList:
-      type: object
-      description: List of hosts
-      properties:
-        hosts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Host'
     ErrorResponse:
       type: object
       description: Error response
@@ -88,6 +80,14 @@ components:
           type: integer
           description: Error code
           example: 404
+    HostList:
+      type: object
+      description: List of hosts
+      properties:
+        hosts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Host'
     Host:
       type: object
       description: A render host machine

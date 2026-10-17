@@ -153,14 +153,18 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    JobList:
+    ErrorResponse:
       type: object
-      description: List of jobs
+      description: Error response
       properties:
-        jobs:
-          type: array
-          items:
-            $ref: '#/components/schemas/Job'
+        error:
+          type: string
+          description: Error message
+          example: Job not found
+        code:
+          type: integer
+          description: Error code
+          example: 404
     SuccessResponse:
       type: object
       description: Generic success response
@@ -171,6 +175,14 @@ components:
         message:
           type: string
           example: Operation completed successfully
+    JobList:
+      type: object
+      description: List of jobs
+      properties:
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
     Job:
       type: object
       description: A render job in OpenCue
@@ -220,15 +232,3 @@ components:
           type: integer
           description: Number of frames waiting to be dispatched
           example: 47
-    ErrorResponse:
-      type: object
-      description: Error response
-      properties:
-        error:
-          type: string
-          description: Error message
-          example: Job not found
-        code:
-          type: integer
-          description: Error code
-          example: 404
