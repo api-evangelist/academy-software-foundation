@@ -29,6 +29,78 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-agent-skills.py
   first_seen: '2026-10-20'
+- partner_name: OpenSSF Best Practices Badge
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.bestpractices.dev/en/projects/2612
+  category: OpenSSF Best Practices badge (open-source project security conformance)
+  contract_reference:
+    register: OpenSSF Best Practices badge projects (bestpractices.dev/en/projects.json, paged)
+    standard: OpenSSF Best Practices Badge criteria (formerly CII Best Practices; bestpractices.dev)
+    spec_file: null
+    role: badge-holder
+    registered_name: Digital Production Example Library (DPEL)
+    matched_by: github-org
+    matched_on: academysoftwarefoundation
+    certified_products:
+    - product: open-source project
+      product_type: open-source project
+      standard: OpenSSF Best Practices Badge criteria (formerly CII Best Practices; bestpractices.dev)
+      lapsed: false
+      partner_tier: silver
+      projects:
+      - name: Digital Production Example Library (DPEL)
+        id: 8737
+        url: https://www.bestpractices.dev/en/projects/8737
+        badge_level: silver
+      - name: MaterialX
+        id: 6025
+        url: https://www.bestpractices.dev/en/projects/6025
+        badge_level: passing
+      - name: Open Shading Language
+        id: 3061
+        url: https://www.bestpractices.dev/en/projects/3061
+        badge_level: passing
+      - name: OpenColorIO
+        id: 2612
+        url: https://www.bestpractices.dev/en/projects/2612
+        badge_level: passing
+      - name: OpenCue
+        id: 2837
+        url: https://www.bestpractices.dev/en/projects/2837
+        badge_level: passing
+      - name: OpenEXR
+        id: 2799
+        url: https://www.bestpractices.dev/en/projects/2799
+        badge_level: passing
+      - name: OpenImageIO
+        id: 2694
+        url: https://www.bestpractices.dev/en/projects/2694
+        badge_level: passing
+      - name: openvdb
+        id: 2774
+        url: https://www.bestpractices.dev/en/projects/2774
+        badge_level: passing
+      - name: rawtoaces
+        id: 11185
+        url: https://www.bestpractices.dev/en/projects/11185
+        badge_level: passing
+      - name: rez
+        id: 8389
+        url: https://www.bestpractices.dev/en/projects/8389
+        badge_level: passing
+    signal_note: 'certified_products = ONE entry (product type: open-source project) with the highest CURRENT badge
+      level in partner_tier; a provider whose projects only lost the badge is lapsed: true; project names are context,
+      never counted; in_progress entries are not conformance'
+    detected_by: sweep-openssf-best-practices-badges.py
+    detected: '2026-10-22'
+    identity_source: apis.yml GitHubOrganization pointer (provider's own declaration)
+  detected_by: sweep-openssf-best-practices-badges.py
+  first_seen: '2026-10-22'
 generated: '2026-10-20'
 method: searched
 source:
@@ -40,3 +112,4 @@ checked:
 - https://officialskills.sh/sitemap.xml
 - https://skillsmp.com/sitemap.xml
 - https://www.skills.sh/sitemap.xml
+- https://www.bestpractices.dev/en/projects.json
