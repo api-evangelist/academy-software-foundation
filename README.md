@@ -1,4 +1,4 @@
-# Academy Software Foundation (academy-software-foundation)
+# Academy Software Foundation
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,290 +66,230 @@
 
 The Academy Software Foundation (ASWF) is a Linux Foundation project that supports open source software development for the motion picture, visual effects, and animation industries. ASWF hosts a portfolio of production-proven open source projects including OpenEXR, OpenVDB, OpenColorIO, OpenTimelineIO, OpenShadingLanguage, MaterialX, and more. These projects form the backbone of modern film and media production pipelines worldwide.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/academy-software-foundation/refs/heads/main/apis.yml)
+**Areas:** Animation · Color Management · Film · Linux Foundation · Open Source · Rendering · Standards · Visual Effects · VFX
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Academy Software Foundation on APIs.io
 
-## Tags:
+Everything profiled for Academy Software Foundation is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/academy-software-foundation/](https://apis.io/providers/academy-software-foundation/)** — or go straight to one of the APIs or properties below.
 
- - Animation, Color Management, Film, Linux Foundation, Open Source, Rendering, Standards, Visual Effects, VFX
+### APIs (14)
 
-## Timestamps
+- [OpenEXR](https://apis.io/apis/academy-software-foundation/openexr/) — OpenEXR is an open standard high-dynamic-range (HDR) image file format specification and reference implementation developed by Industrial Light and Magic.…
+- [OpenVDB](https://apis.io/apis/academy-software-foundation/openvdb/) — OpenVDB is an Academy Award-winning open source C++ library for efficient storage and manipulation of sparse volumetric data discretized on…
+- [OpenColorIO](https://apis.io/apis/academy-software-foundation/opencolorio/) — OpenColorIO (OCIO) is a complete color management solution geared towards motion picture production, enabling color transforms and image display to be…
+- [OpenTimelineIO](https://apis.io/apis/academy-software-foundation/opentimelineio/) — OpenTimelineIO (OTIO) is an open source API and interchange format for editorial timeline information. It is designed to be more expressive than existing…
+- [Open Shading Language](https://apis.io/apis/academy-software-foundation/openshadinglanguage/) — Open Shading Language (OSL) is a small but rich language for programmable shading in advanced renderers and other applications. It is ideal for describing…
+- [MaterialX](https://apis.io/apis/academy-software-foundation/materialx/) — MaterialX is an open standard for the exchange of rich material and look-development content between applications and renderers. It provides a language for…
+- [OpenImageIO](https://apis.io/apis/academy-software-foundation/openimagedio/) — OpenImageIO (OIIO) is a library for reading, writing, and processing images in a wide variety of file formats. It is used in visual effects and animation…
+- [OpenFX](https://apis.io/apis/academy-software-foundation/openfx/) — OpenFX is an open standard API for visual effects plug-ins used in compositing and image processing applications. It defines how host applications and image…
+- [OpenAPV](https://apis.io/apis/academy-software-foundation/openapv/) — OpenAPV is an open, royalty-free video codec specification designed for professional video production and post-production workflows. It is optimized for…
+- [OpenPBR](https://apis.io/apis/academy-software-foundation/openpbr/) — OpenPBR is an open specification and reference implementation for a physically-based shading model. It defines a standard material definition language that…
+- [Academy Software Foundation Hosts API](https://apis.io/apis/academy-software-foundation/academy-software-foundation-hosts-api/) — Manage render host machines in the farm
+- [Academy Software Foundation Jobs API](https://apis.io/apis/academy-software-foundation/academy-software-foundation-jobs-api/) — Manage render jobs submitted to the render farm
+- [Academy Software Foundation Layers API](https://apis.io/apis/academy-software-foundation/academy-software-foundation-layers-api/) — Manage layers within a render job
+- [Academy Software Foundation Shows API](https://apis.io/apis/academy-software-foundation/academy-software-foundation-shows-api/) — Manage shows (productions) in OpenCue
 
-- **Created:** 2026-03-16
-- **Modified:** 2026-04-19
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### OpenEXR
-OpenEXR is an open standard high-dynamic-range (HDR) image file format specification and reference implementation developed by Industrial Light and Magic. It is the industry standard for visual effects and animation and provides a C++ library for reading and writing EXR image files.
+#### MCP servers (1)
 
-**Human URL:** [https://openexr.com/](https://openexr.com/)
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags:
+- [academy-software-foundation-mcp.yml](https://apis.io/servers/academy-software-foundation/academy-software-foundation-mcp-yml/)
 
- - Image Format, HDR, Standards, C++
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Documentation](https://openexr.com/)
-- [GitHubRepository](https://github.com/AcademySoftwareFoundation/openexr)
+- [Academy Software Foundation Agentic Access](https://apis.io/agentic-access/academy-software-foundation/academy-software-foundation-agentic-access/)
 
-### OpenVDB
-OpenVDB is an Academy Award-winning open source C++ library for efficient storage and manipulation of sparse volumetric data discretized on three-dimensional grids. It is the industry standard for volumetric effects in film and visual effects production.
+#### JSON Schema (18)
 
-**Human URL:** [https://www.openvdb.org/](https://www.openvdb.org/)
+The data models the API reads and writes.
 
-#### Tags:
+- [ErrorResponse](https://apis.io/schemas/academy-software-foundation/academy-software-foundation-errorresponse/)
+- [Host](https://apis.io/schemas/academy-software-foundation/academy-software-foundation-host/)
+- [HostList](https://apis.io/schemas/academy-software-foundation/academy-software-foundation-hostlist/)
+- [Job](https://apis.io/schemas/academy-software-foundation/academy-software-foundation-job/)
+- [JobList](https://apis.io/schemas/academy-software-foundation/academy-software-foundation-joblist/)
+- [Layer](https://apis.io/schemas/academy-software-foundation/academy-software-foundation-layer/)
+- [LayerList](https://apis.io/schemas/academy-software-foundation/academy-software-foundation-layerlist/)
+- [Show](https://apis.io/schemas/academy-software-foundation/academy-software-foundation-show/)
+- [ShowList](https://apis.io/schemas/academy-software-foundation/academy-software-foundation-showlist/)
+- [SuccessResponse](https://apis.io/schemas/academy-software-foundation/academy-software-foundation-successresponse/)
+- [Host](https://apis.io/schemas/academy-software-foundation/opencue-host/)
+- [HostList](https://apis.io/schemas/academy-software-foundation/opencue-host-list/)
+- [Job](https://apis.io/schemas/academy-software-foundation/opencue-job/)
+- [JobList](https://apis.io/schemas/academy-software-foundation/opencue-job-list/)
+- [Layer](https://apis.io/schemas/academy-software-foundation/opencue-layer/)
+- [LayerList](https://apis.io/schemas/academy-software-foundation/opencue-layer-list/)
+- [Show](https://apis.io/schemas/academy-software-foundation/opencue-show/)
+- [ShowList](https://apis.io/schemas/academy-software-foundation/opencue-show-list/)
 
- - Volumetric Data, C++, Rendering, Standards
+#### JSON Structure (9)
 
-#### Properties
+Data models expressed in JSON Structure.
 
-- [Documentation](https://www.openvdb.org/documentation/)
-- [GitHubRepository](https://github.com/AcademySoftwareFoundation/openvdb)
+- [Academy Software Foundation Structure](https://apis.io/json-structure/academy-software-foundation/academy-software-foundation-structure/)
+- [Opencue Host List Structure](https://apis.io/json-structure/academy-software-foundation/opencue-host-list-structure/)
+- [Opencue Host Structure](https://apis.io/json-structure/academy-software-foundation/opencue-host-structure/)
+- [Opencue Job List Structure](https://apis.io/json-structure/academy-software-foundation/opencue-job-list-structure/)
+- [Opencue Job Structure](https://apis.io/json-structure/academy-software-foundation/opencue-job-structure/)
+- [Opencue Layer List Structure](https://apis.io/json-structure/academy-software-foundation/opencue-layer-list-structure/)
+- [Opencue Layer Structure](https://apis.io/json-structure/academy-software-foundation/opencue-layer-structure/)
+- [Opencue Show List Structure](https://apis.io/json-structure/academy-software-foundation/opencue-show-list-structure/)
+- [Opencue Show Structure](https://apis.io/json-structure/academy-software-foundation/opencue-show-structure/)
 
-### OpenColorIO
-OpenColorIO (OCIO) is a complete color management solution geared towards motion picture production, enabling color transforms and image display to be handled in a consistent manner across many applications. It is used by major VFX studios and DCC tools including Maya, Nuke, and Houdini.
+#### JSON-LD (1)
 
-**Human URL:** [https://opencolorio.org/](https://opencolorio.org/)
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags:
+- [Academy Software Foundation Opencue Context](https://apis.io/jsonld/academy-software-foundation/academy-software-foundation-opencue-context/)
 
- - Color Management, Standards, C++
+#### Vocabulary (1)
 
-#### Properties
+The provider's domain terms, defined.
 
-- [Documentation](https://opencolorio.readthedocs.io/)
-- [GitHubRepository](https://github.com/AcademySoftwareFoundation/OpenColorIO)
+- [Academy Software Foundation Vocabulary](https://apis.io/vocabularies/academy-software-foundation/academy-software-foundation-vocabulary/)
 
-### OpenTimelineIO
-OpenTimelineIO (OTIO) is an open source API and interchange format for editorial timeline information. It is designed to be more expressive than existing formats while still being easy to read and write, enabling better interoperability between editing tools.
+#### Examples (13)
 
-**Human URL:** [https://opentimeline.io/](https://opentimeline.io/)
+Example requests and responses.
 
-#### Tags:
+- [Academy Software Foundation Getjob Example](https://apis.io/examples/academy-software-foundation/academy-software-foundation-getjob-example/)
+- [Academy Software Foundation Listhosts Example](https://apis.io/examples/academy-software-foundation/academy-software-foundation-listhosts-example/)
+- [Academy Software Foundation Listjobs Example](https://apis.io/examples/academy-software-foundation/academy-software-foundation-listjobs-example/)
+- [Academy Software Foundation Listlayers Example](https://apis.io/examples/academy-software-foundation/academy-software-foundation-listlayers-example/)
+- [Academy Software Foundation Listshows Example](https://apis.io/examples/academy-software-foundation/academy-software-foundation-listshows-example/)
+- [Opencue Host Example](https://apis.io/examples/academy-software-foundation/opencue-host-example/)
+- [Opencue Host List Example](https://apis.io/examples/academy-software-foundation/opencue-host-list-example/)
+- [Opencue Job Example](https://apis.io/examples/academy-software-foundation/opencue-job-example/)
+- [Opencue Job List Example](https://apis.io/examples/academy-software-foundation/opencue-job-list-example/)
+- [Opencue Layer Example](https://apis.io/examples/academy-software-foundation/opencue-layer-example/)
+- [Opencue Layer List Example](https://apis.io/examples/academy-software-foundation/opencue-layer-list-example/)
+- [Opencue Show Example](https://apis.io/examples/academy-software-foundation/opencue-show-example/)
+- [Opencue Show List Example](https://apis.io/examples/academy-software-foundation/opencue-show-list-example/)
 
- - Editorial, Timeline, Standards, Python
+#### Collections (4)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://opentimelineio.readthedocs.io/)
-- [GitHubRepository](https://github.com/AcademySoftwareFoundation/OpenTimelineIO)
+- [Academy Software Foundation - OpenCue Hosts API](https://apis.io/collections/academy-software-foundation/open-academy-software-foundation-hosts-api/)
+- [Academy Software Foundation - OpenCue Hosts Jobs API](https://apis.io/collections/academy-software-foundation/open-academy-software-foundation-jobs-api/)
+- [Academy Software Foundation - OpenCue Hosts Layers API](https://apis.io/collections/academy-software-foundation/open-academy-software-foundation-layers-api/)
+- [Academy Software Foundation - OpenCue Hosts Shows API](https://apis.io/collections/academy-software-foundation/open-academy-software-foundation-shows-api/)
 
-### Open Shading Language
-Open Shading Language (OSL) is a small but rich language for programmable shading in advanced renderers and other applications. It is ideal for describing materials, lights, displacement, and pattern generation and is supported by many production renderers.
+#### Overlays (4)
 
-**Human URL:** [https://github.com/AcademySoftwareFoundation/OpenShadingLanguage](https://github.com/AcademySoftwareFoundation/OpenShadingLanguage)
+OpenAPI overlays, including conversational phrasing for each operation.
 
-#### Tags:
+- [Academy Software Foundation Hosts Api Overlay](https://apis.io/overlays/academy-software-foundation/academy-software-foundation-hosts-api-overlay/)
+- [Academy Software Foundation Jobs Api Overlay](https://apis.io/overlays/academy-software-foundation/academy-software-foundation-jobs-api-overlay/)
+- [Academy Software Foundation Layers Api Overlay](https://apis.io/overlays/academy-software-foundation/academy-software-foundation-layers-api-overlay/)
+- [Academy Software Foundation Shows Api Overlay](https://apis.io/overlays/academy-software-foundation/academy-software-foundation-shows-api-overlay/)
 
- - Shading, Rendering, Standards, C++
+#### Governance rules (2)
 
-#### Properties
+Spectral rulesets for the provider's contracts.
 
-- [Documentation](https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/blob/main/src/doc/osl-languagespec.pdf)
-- [GitHubRepository](https://github.com/AcademySoftwareFoundation/OpenShadingLanguage)
+- [Academy Software Foundation — jsonschema rules](https://apis.io/rules/academy-software-foundation/academy-software-foundation-jsonschema-spectral-rules/)
+- [Academy Software Foundation API Rules](https://apis.io/rules/academy-software-foundation/academy-software-foundation-spectral-rules/)
 
-### MaterialX
-MaterialX is an open standard for the exchange of rich material and look-development content between applications and renderers. It provides a language for defining surface and volume shading patterns that can be used across different rendering systems and DCC applications.
+#### Security (3)
 
-**Human URL:** [https://www.materialx.org/](https://www.materialx.org/)
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Tags:
+- [Academy Software Foundation Authentication](https://apis.io/security/academy-software-foundation/academy-software-foundation-authentication/)
+- [Academy Software Foundation Domain Security](https://apis.io/security/academy-software-foundation/academy-software-foundation-domain-security/)
+- [Academy Software Foundation Vulnerability Disclosure](https://apis.io/security/academy-software-foundation/academy-software-foundation-vulnerability-disclosure/)
 
- - Materials, Shading, Standards, XML
+#### Plans and pricing (1)
 
-#### Properties
+Published plans, tiers and prices.
 
-- [Documentation](https://materialx.org/docs/)
-- [GitHubRepository](https://github.com/AcademySoftwareFoundation/MaterialX)
+- [Academy Software Foundation Plans Pricing](https://apis.io/plans/academy-software-foundation/academy-software-foundation-plans-pricing/)
 
-### OpenCue
-OpenCue is an open source render management system for visual effects and animation productions. It enables studios to deploy and manage a render farm, schedule jobs, and track progress across large numbers of render nodes. It was originally developed by Sony Pictures Imageworks.
+#### Rate limits (1)
 
-**Human URL:** [https://www.opencue.io/](https://www.opencue.io/)
+Published request limits.
 
-#### Tags:
+- [Academy Software Foundation Rate Limits](https://apis.io/rate-limits/academy-software-foundation/academy-software-foundation-rate-limits/)
 
- - Render Management, VFX, Python
+#### FinOps (1)
 
-#### Properties
+What the API costs to run, by operation.
 
-- [Documentation](https://www.opencue.io/docs/)
-- [GitHubRepository](https://github.com/AcademySoftwareFoundation/OpenCue)
-- [OpenAPI](openapi/academy-software-foundation-opencue.yaml)
-- [JSONSchema](json-schema/opencue-job-schema.json)
-- [Example](examples/opencue-job-example.json)
+- [Academy Software Foundation Finops](https://apis.io/finops/academy-software-foundation/academy-software-foundation-finops/)
 
-### OpenImageIO
-OpenImageIO (OIIO) is a library for reading, writing, and processing images in a wide variety of file formats. It is used in visual effects and animation production pipelines for texture baking, image compositing, and format conversion.
+## Where to find this API
 
-**Human URL:** [https://sites.google.com/site/openimageio/home](https://sites.google.com/site/openimageio/home)
-
-#### Tags:
-
- - Image Processing, C++, VFX
-
-#### Properties
-
-- [Documentation](https://openimageio.readthedocs.io/)
-- [GitHubRepository](https://github.com/AcademySoftwareFoundation/OpenImageIO)
-
-### OpenFX
-OpenFX is an open standard API for visual effects plug-ins used in compositing and image processing applications. It defines how host applications and image processing plug-ins communicate, enabling interoperability across compositing tools.
-
-**Human URL:** [https://openfx.io/](https://openfx.io/)
-
-#### Tags:
-
- - Visual Effects, Plugin API, Standards, C++
-
-#### Properties
-
-- [Documentation](https://openfx.io/)
-- [GitHubRepository](https://github.com/AcademySoftwareFoundation/openfx)
-
-### OpenAPV
-OpenAPV is an open, royalty-free video codec specification designed for professional video production and post-production workflows. It is optimized for high-quality intermediate video formats used in camera and on-set production pipelines.
-
-**Human URL:** [https://github.com/AcademySoftwareFoundation/openapv](https://github.com/AcademySoftwareFoundation/openapv)
-
-#### Tags:
-
- - Video Codec, Standards, C
-
-#### Properties
-
-- [GitHubRepository](https://github.com/AcademySoftwareFoundation/openapv)
-
-### OpenPBR
-OpenPBR is an open specification and reference implementation for a physically-based shading model. It defines a standard material definition language that can be used across different renderers to achieve consistent appearance.
-
-**Human URL:** [https://academysoftwarefoundation.github.io/OpenPBR/](https://academysoftwarefoundation.github.io/OpenPBR/)
-
-#### Tags:
-
- - Rendering, Materials, Standards
-
-#### Properties
-
-- [Documentation](https://academysoftwarefoundation.github.io/OpenPBR/)
-- [GitHubRepository](https://github.com/AcademySoftwareFoundation/OpenPBR)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.aswf.io/)
 - [Documentation](https://www.aswf.io/projects/)
-- [GitHubOrganization](https://github.com/AcademySoftwareFoundation)
+- [Getting started](https://www.aswf.io/get-involved/)
+- [API reference](https://www.opencue.io/docs/reference/rest-api-reference/)
+- [Pricing](https://www.aswf.io/join/)
+- [Sign up](https://www.aswf.io/join/)
+- [Support](https://www.aswf.io/get-involved/)
 - [Blog](https://www.aswf.io/news/)
-- [GettingStarted](https://www.aswf.io/get-involved/)
-- [TermsOfService](https://www.aswf.io/terms/)
-- [PrivacyPolicy](https://www.aswf.io/privacy/)
-- [SpectralRules](rules/academy-software-foundation-spectral-rules.yml)
-- [NaftikoCapability](capabilities/render-farm-management.yaml)
-- [Vocabulary](vocabulary/academy-software-foundation-vocabulary.yaml)
+- [Terms of service](https://www.linuxfoundation.org/terms)
+- [Privacy policy](https://www.linuxfoundation.org/privacy)
+- [GitHub](https://github.com/AcademySoftwareFoundation)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| Open Source Governance | All ASWF projects are governed by open, transparent processes under the Linux Foundation umbrella |
-| Production-Proven Projects | Projects like OpenEXR, OpenVDB, and OpenColorIO are used in major film studios worldwide |
-| Vendor-Neutral Collaboration | ASWF provides a neutral forum where studios, vendors, and developers collaborate on shared technology challenges |
-| CI/CD Infrastructure | ASWF provides shared containerized build and test infrastructure via aswf-docker for consistent CI/CD across all projects |
-| Working Groups | Dedicated working groups address cross-project topics such as CI, color interop, and language interoperability |
-| Standards Development | ASWF projects define and maintain industry standards used across the global VFX and animation pipeline |
+**Kin Score 55.4** — strong · rubric 0.25.0 · scored 2026-10-23
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 69.6 |
+| Contract quality | 26.0 |
+| Contract governance | 31.8 |
+| Operational transparency | 57.9 |
+| Developer ergonomics | 70.8 |
+| Access clarity | 44.7 |
 
-| Name | Description |
-|------|-------------|
-| VFX Production Pipeline | OpenEXR, OpenVDB, OpenColorIO, and OSL form the core of visual effects production pipelines at major studios |
-| Render Farm Management | OpenCue enables studios to build and operate large-scale distributed render farms for animation and VFX |
-| Color Pipeline Standardization | OpenColorIO provides consistent color transforms across all DCC tools in a studio pipeline |
-| Editorial Interchange | OpenTimelineIO enables timeline data exchange between editing applications like Avid, Premiere, and DaVinci Resolve |
-| Material Interchange | MaterialX and OpenPBR enable look development assets to be transferred between different render engines |
-| Image Format Standardization | OpenEXR provides a universal HDR image format for compositing, rendering output, and archiving |
+**Agent readiness 35.7** — agent-ready
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | yes |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
 
-| Name | Description |
-|------|-------------|
-| Autodesk Maya | Integrates with OpenColorIO, OpenEXR, and other ASWF standards via native plug-ins |
-| The Foundry Nuke | Uses OpenColorIO, OpenEXR, and OpenFX plug-ins extensively in compositing workflows |
-| SideFX Houdini | Deep integration with OpenVDB, OpenColorIO, and OpenEXR for VFX and simulation workflows |
-| Blender | Uses OpenEXR, OpenColorIO, OpenShadingLanguage, and OpenVDB for rendering and compositing |
-| Pixar USD | Works alongside ASWF standards as part of the broader VFX open source ecosystem |
-| NVIDIA Omniverse | Uses MaterialX and OpenColorIO for material interchange and color management |
+**Regulatory alignment 30.4** — Horizontal (data, software, accessibility, platform)
 
-## Artifacts
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/academy-software-foundation/](https://apis.io/providers/academy-software-foundation/).
 
-Machine-readable API specifications organized by format.
+## How this profile is made
 
-### OpenAPI
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-- [Academy Software Foundation Opencue](openapi/academy-software-foundation-opencue.yaml)
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Academy Software Foundation: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-### JSON Schema
+## Open an issue
 
-- [Opencue Host List Schema](json-schema/opencue-host-list-schema.json)
-- [Opencue Host Schema](json-schema/opencue-host-schema.json)
-- [Opencue Job List Schema](json-schema/opencue-job-list-schema.json)
-- [Opencue Job Schema](json-schema/opencue-job-schema.json)
-- [Opencue Layer List Schema](json-schema/opencue-layer-list-schema.json)
-- [Opencue Layer Schema](json-schema/opencue-layer-schema.json)
-- [Opencue Show List Schema](json-schema/opencue-show-list-schema.json)
-- [Opencue Show Schema](json-schema/opencue-show-schema.json)
-
-### JSON Structure
-
-- [Opencue Host List Structure](json-structure/opencue-host-list-structure.json)
-- [Opencue Host Structure](json-structure/opencue-host-structure.json)
-- [Opencue Job List Structure](json-structure/opencue-job-list-structure.json)
-- [Opencue Job Structure](json-structure/opencue-job-structure.json)
-- [Opencue Layer List Structure](json-structure/opencue-layer-list-structure.json)
-- [Opencue Layer Structure](json-structure/opencue-layer-structure.json)
-- [Opencue Show List Structure](json-structure/opencue-show-list-structure.json)
-- [Opencue Show Structure](json-structure/opencue-show-structure.json)
-
-### JSON-LD
-
-- [Academy Software Foundation Opencue Context](json-ld/academy-software-foundation-opencue-context.jsonld)
-
-### Examples
-
-- [Opencue Host Example](examples/opencue-host-example.json)
-- [Opencue Host List Example](examples/opencue-host-list-example.json)
-- [Opencue Job Example](examples/opencue-job-example.json)
-- [Opencue Job List Example](examples/opencue-job-list-example.json)
-- [Opencue Layer Example](examples/opencue-layer-example.json)
-- [Opencue Layer List Example](examples/opencue-layer-list-example.json)
-- [Opencue Show Example](examples/opencue-show-example.json)
-- [Opencue Show List Example](examples/opencue-show-list-example.json)
-
-## Capabilities
-
-Naftiko capabilities for OpenCue render farm management.
-
-### Shared Per-API Definitions
-
-- [Opencue](capabilities/shared/opencue.yaml)
-
-### Workflow Capabilities
-
-- [Render Farm Management](capabilities/render-farm-management.yaml)
-
-## Vocabulary
-
-- [Academy Software Foundation Vocabulary](vocabulary/academy-software-foundation-vocabulary.yaml) — Unified taxonomy mapping 4 resources, 3 actions, 1 workflow, and 2 personas across ASWF projects
-
-## Rules
-
-- [Academy Software Foundation Spectral Rules](rules/academy-software-foundation-spectral-rules.yml) — 22 rules enforcing Academy Software Foundation API conventions
-
-## Maintainers
-
-**FN:** Kin Lane
-
-**Email:** info@apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/academy-software-foundation/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
