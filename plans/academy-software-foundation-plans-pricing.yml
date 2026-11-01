@@ -1,0 +1,178 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://www.aswf.io/join/
+sources:
+- https://www.aswf.io/join/
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T141238
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: tiered-subscription
+delivery:
+  delivery: unclear
+  method: page
+  read: '2026-10-28'
+published: true
+note: Foundation corporate membership dues page; tiers by employee count, plus required Linux Foundation
+  Silver membership fees. No billing period stated; no API/software pricing.
+plan_count: 10
+currency: USD
+plans:
+- name: Premier Member
+  price_text: $50,000 (USD)
+  price: 50000
+  currency: USD
+  period: none
+  unit: membership
+- name: General – 5,000 and above employees
+  price_text: $20,000 (USD)
+  price: 20000
+  currency: USD
+  period: none
+  unit: membership
+  included_quota: 5,000 and above employees
+- name: General – 2,000–4,999 employees
+  price_text: $15,000 (USD)
+  price: 15000
+  currency: USD
+  period: none
+  unit: membership
+  included_quota: 2,000–4,999 employees
+- name: General – 500-1,999 employees
+  price_text: $10,000 (USD)
+  price: 10000
+  currency: USD
+  period: none
+  unit: membership
+  included_quota: 500-1,999 employees
+- name: General – Less than 499 employees
+  price_text: $5,000 (USD)
+  price: 5000
+  currency: USD
+  period: none
+  unit: membership
+  included_quota: Less than 499 employees
+- name: Associate (Pre-Approved Non-Profits, Open Source Projects and Government Entities)
+  price_text: $0
+  price: 0
+  currency: USD
+  period: none
+  unit: membership
+- name: Linux Foundation Silver Membership – 5,000 and above employees
+  price_text: $20,000
+  price: 20000
+  currency: USD
+  period: none
+  unit: membership
+  included_quota: 5,000 and above employees
+- name: Linux Foundation Silver Membership – 500–4,999 employees
+  price_text: $15,000
+  price: 15000
+  currency: USD
+  period: none
+  unit: membership
+  included_quota: 500–4,999 employees
+- name: Linux Foundation Silver Membership – 100-499 employees
+  price_text: $10,000
+  price: 10000
+  currency: USD
+  period: none
+  unit: membership
+  included_quota: 100-499 employees
+- name: Linux Foundation Silver Membership – Less than 99 employees
+  price_text: $5,000
+  price: 5000
+  currency: USD
+  period: none
+  unit: membership
+  included_quota: Less than 99 employees
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - free
+  - subscription
+  units: []
+  plans:
+  - name: Premier Member
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - none
+  - name: General – 5,000 and above employees
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - none
+  - name: General – 2,000–4,999 employees
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - none
+  - name: General – 500-1,999 employees
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - none
+  - name: General – Less than 499 employees
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - none
+  - name: Associate (Pre-Approved Non-Profits, Open Source Projects and Government Entitie
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - other
+    periods:
+    - none
+  - name: Linux Foundation Silver Membership – 5,000 and above employees
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - none
+  - name: Linux Foundation Silver Membership – 500–4,999 employees
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - none
+  - name: Linux Foundation Silver Membership – 100-499 employees
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - none
+  - name: Linux Foundation Silver Membership – Less than 99 employees
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - none
